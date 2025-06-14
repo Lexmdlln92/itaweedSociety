@@ -10,6 +10,12 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProfilePage from "./pages/ProfilePage";
 import SearchPage from "./pages/SearchPage";
 import AdminDashboard from "./pages/AdminDashboard";
+import UniversoD2DPage from "./pages/UniversoD2DPage";
+import VisionLEXPage from './pages/VisionLEXPage';
+import UndertakeInfo from "./pages/UndertakeInfo";
+import CollaborationPage from "./pages/CollaborationPage";
+import StatesPage from "./pages/StatesPage";
+
 
 function App() {
   return (
@@ -19,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/customize/:category" element={<CustomizePage />} />
+          <Route path="/products/vision-lex" element={<VisionLEXPage />} />
+          <Route path="/products/universo-d2d" element={<UniversoD2DPage />} />
           <Route path="/products/new" element={<ProductsPage />} />
           <Route path="/products/:category" element={<ProductsPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
@@ -27,6 +35,10 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/undertake" element={<UndertakeInfo />} />
+          <Route path="/collaborationPage" element={<CollaborationPage />} />
+          <Route path="/states" element={<StatesPage />} />
+
         </Routes>
       </main>
     </>

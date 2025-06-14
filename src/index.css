@@ -1,5 +1,36 @@
 @import "tailwindcss";
 
-body{
+html, body {
+  overflow-x: hidden;
+}
+
+/* Tu estilo base */
+body {
   background-color: rgb(70, 3, 62);
 }
+
+/* 👇 Aquí agregamos la animación personalizada de marquee */
+@layer utilities {
+  .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 12s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
+

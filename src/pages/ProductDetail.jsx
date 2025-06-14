@@ -6,8 +6,19 @@ import t3 from "../assets/tshirt3.png";
 import t4 from "../assets/tshirt4.png";
 import t5 from "../assets/tshirt5.png";
 import t6 from "../assets/tshirt6.jpg";
+import t7 from "../assets/tshirt7.png";
+import t8 from "../assets/tshirt8.png";
+import t9 from "../assets/tshirt9.png";
+import t10 from "../assets/tshirt10.png";
+import t11 from "../assets/tshirt11.png";
+import t12 from "../assets/tshirt12.png";
+import buzo1 from "../assets/buzo1.png";
+import buzo2 from "../assets/buzo2.png";
+import buzo3 from "../assets/buzo3.png";
+import buzo4 from "../assets/buzo4.png";
 
 const mockProducts = {
+  // Productos Universo D2D
   "1": {
     name: "T-shirt monkey fly",
     price: 75,
@@ -53,6 +64,85 @@ const mockProducts = {
     image: t6,
     rating: 4.3,
     description: "T-shirt simple pero con tejido premium y cortes limpios.",
+  },
+ // Productos Vision LEX
+  "t7": {
+    name: "Homero Smoking",
+    price: 75,
+    image: t7,
+    rating: 4.5,
+    description: "Buzo premium con estampado de Homero en smoking elegante.",
+    brand: "vision-lex"
+  },
+  "t8": {
+    name: "LEX Homero",
+    price: 80,
+    image: t8,
+    rating: 4.7,
+    description: "Edición especial LEX con diseño futurista de Homero.",
+    brand: "vision-lex"
+  },
+  "t9": {
+    name: "Niño Rata",
+    price: 240,
+    image: t9,
+    rating: 4.2,
+    description: "Gorra con diseño irreverente y detalles únicos.",
+    brand: "vision-lex"
+  },
+  "t10": {
+    name: "Krusty Skull",
+    price: 75,
+    image: t10,
+    rating: 4.4,
+    description: "Buzo con cráneo estilo Krusty el Payaso.",
+    brand: "vision-lex"
+  },
+  "t11": {
+    name: "Good Luck Black",
+    price: 80,
+    image: t11,
+    rating: 4.6,
+    description: "Diseño minimalista con mensaje oculto.",
+    brand: "vision-lex"
+  },
+  "t12": {
+    name: "Dirty Bart Oversize",
+    price: 240,
+    image: t12,
+    rating: 4.1,
+    description: "Versión oversize del clásico Bart rebelde.",
+    brand: "vision-lex"
+  },
+   "10": {
+    name: "Vertical Striped Shirt",
+    price: 212,
+    discount: 235,
+    image: buzo1,
+    rating: 4.4,
+    description: "Buzo con líneas verticales, perfecto para outfits modernos.",
+  },
+  "11": {
+    name: "Courage Graphic Tee",
+    price: 145,
+    image: buzo2,
+    rating: 4.6,
+    description: "Remera con estampado urbano y tipografía valiente.",
+  },
+  "12": {
+    name: "Vertical Striped Shirt",
+    price: 212,
+    discount: 235,
+    image: buzo3,
+    rating: 4.2,
+    description: "Otra variante de nuestro buzo más vendido.",
+  },
+  "13": {
+    name: "Courage Graphic Tee",
+    price: 145,
+    image: buzo4,
+    rating: 4.7,
+    description: "Edición limitada con detalles gráficos únicos.",
   },
 };
 
