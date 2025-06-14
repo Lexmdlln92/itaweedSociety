@@ -8,7 +8,7 @@ export default function HeroSection() {
         FIND CLOTHES <br /> THAT MATCHES <br /> YOUR STYLE
       </h1>
       <p className="mt-3 text-gray-500">
-        Browse our unique selection crafted to reflect your individuality.
+        marcas para gente chimbita .
       </p>
       <img src={hero} alt="Hero" className="w-full mt-4 rounded-md" />
     </section>
