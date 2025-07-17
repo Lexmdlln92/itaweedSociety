@@ -1,6 +1,8 @@
 // src/components/CustomizationSection.jsx
-import camisetas from "../assets/tshirt1.png";
-import buzos from "../assets/tshirt2.png";
+import camisetas from "../assets/camiseta.png";
+import buzos from "../assets/buzo.png";
+import sudaderas from "../assets/sweatpants.png";
+import pantalonetas from "../assets/shorts.png";
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,6 +16,17 @@ const styles = [
     label: "Buzos",
     image: buzos,
     path: "/customize/buzos",
+  },
+  {
+    label: "Sudaderas",
+    image: sudaderas,
+    path: "/customize/sudaderas",
+
+  },
+  {
+    label: "Pantalonetas",
+    image: pantalonetas,
+    path: "/customize/pantalonetas",
 
   },
 ];
@@ -26,8 +39,8 @@ export default function CustomizationSection() {
       <h2 className="text-center text-3xl sm:text-4xl font-bold uppercase mb-6 text-white">
         Personaliza tus prendas by D2D
       </h2>
-
-      <div className="grid grid-cols-2 gap-4">
+      <p className="text-lg text-white mb-6 text-center">Saca ese diseñador que llevas dentro,<br/> selecciona el tipo de prenda, talla, colores y agrega la imagen que prefieras y obtén un preview de tu prenda.</p>
+      <div className="grid grid-cols-2 gap-4 mt-5">
         {styles.map((item, i) => (
           <button
             key={i}

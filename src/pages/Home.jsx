@@ -17,12 +17,12 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSection />
-      <MarqueeText/>
+      <MarqueeText text="👽 D2D 🔥 LEX 👽 D2D 🔥 LEX 👽 D2D 🔥 LEX" />
       <NewArrivals />
       <BrandSection/>
       <CustomizationSection/>
       <StorieSection/>
-      <MarqueeText/>
+      <MarqueeText text="Los sueños son para ser perseguidos 24/7 ✨" speed="14s" />
       <Undertake />
       <Collaborations/>
       <States />

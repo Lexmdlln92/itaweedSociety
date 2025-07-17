@@ -15,7 +15,9 @@ import VisionLEXPage from './pages/VisionLEXPage';
 import UndertakeInfo from "./pages/UndertakeInfo";
 import CollaborationPage from "./pages/CollaborationPage";
 import StatesPage from "./pages/StatesPage";
-
+import Hoodie1Silhouettes from "./pages/customize/Hoodie1Silhouettes";
+import HoodieStep2Size from "./pages/customize/HoodieStep2Size";
+import HoodieStep3Color from "./pages/customize/HoodieStep3Color";
 
 function App() {
   return (
@@ -38,6 +40,9 @@ function App() {
           <Route path="/undertake" element={<UndertakeInfo />} />
           <Route path="/collaborationPage" element={<CollaborationPage />} />
           <Route path="/states" element={<StatesPage />} />
+          <Route path="/customize/buzos" element={<Hoodie1Silhouettes />} />
+          <Route path="/customize/buzos/step2" element={<HoodieStep2Size />} />
+          <Route path="/customize/buzos/step3" element={<HoodieStep3Color />} />
 
         </Routes>
       </main>

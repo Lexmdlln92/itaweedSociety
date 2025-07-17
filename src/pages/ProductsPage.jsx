@@ -2,6 +2,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import MarqueeText from "../components/MarqueeText";
 
 import t1 from "../assets/tshirt1.png";
 import t2 from "../assets/tshirt2.png";
@@ -81,9 +82,10 @@ export default function ProductsPage() {
           <h1 className="text-center text-3xl sm:text-4xl font-bold mb-6">
             New Arrivals
           </h1>
-
+          {/* Maquesina */}
+          <MarqueeText text="✨ Colecciones nuevas cada Mes" speed="12s"/>
           {/* Filtros */}
-          <div className="flex gap-3 overflow-x-auto pb-4">
+          <div className="flex gap-3 overflow-x-auto pb-4 mt-6">
             <button
               onClick={() => {
                 setFiltered(allProducts);

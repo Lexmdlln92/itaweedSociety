@@ -4,13 +4,13 @@ html, body {
   overflow-x: hidden;
 }
 
-/* Tu estilo base */
+/* Fondo base */
 body {
-  background-color: rgb(70, 3, 62);
+  background-color: #3b0057
 }
 
-/* 👇 Aquí agregamos la animación personalizada de marquee */
 @layer utilities {
+  /* 🎞️ Animación de marquee */
   .marquee-container {
     overflow: hidden;
     white-space: nowrap;
@@ -32,5 +32,33 @@ body {
       transform: translateX(-50%);
     }
   }
+
+  @keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.25s ease-out forwards;
+}
+.animate-fade-out {
+  animation: fade-out 0.25s ease-in forwards;
+}
+}
