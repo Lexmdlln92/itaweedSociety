@@ -1,5 +1,4 @@
 // src/pages/customize/HoodieStep3Color.jsx
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -15,16 +14,16 @@ import capuchaInterna from "/src/assets/hoodieParts/capucha-interna.png";
 import cordon from "/src/assets/hoodieParts/cordon.png";
 
 const hoodieParts = [
-  { name: "mangas derecha", image: mangasDerecha },
-  { name: "mangas izquierda", image: mangasIzquierda },
-  { name: "frente", image: frente },
- // { name: "espalda", image: espalda },
-  { name: "ribs derecho", image: ribsDerecho },
-  { name: "ribs izquierda", image: ribsIzquierdo },
-  { name: "fajon (cintura)", image: fajon },
-  { name: "capucha externa", image: capuchaExterna },
-  { name: "capucha interna", image: capuchaInterna },
-  { name: "cordon", image: cordon },
+  { name: "Manga derecha", image: mangasDerecha },
+  { name: "Manga izquierda", image: mangasIzquierda },
+  { name: "Frente", image: frente },
+  // { name: "Espalda", image: espalda },
+  { name: "Rib derecho", image: ribsDerecho },
+  { name: "Rib izquierdo", image: ribsIzquierdo },
+  { name: "Fajon (cintura)", image: fajon },
+  { name: "Capucha externa", image: capuchaExterna },
+  { name: "Capucha interna", image: capuchaInterna },
+  { name: "Cordon", image: cordon },
 ];
 
 const colorOptions = [
@@ -42,12 +41,41 @@ export default function HoodieStep3Color({ onNext }) {
   const [showPreview, setShowPreview] = useState(false);
   const [openSection, setOpenSection] = useState(null);
 
+  // Estilos de vibración y mensaje de error
+  const [shakePreview, setShakePreview] = useState(false);
+  const [shakeNext, setShakeNext] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const handleColorSelect = (hex) => {
     if (!selectedPart) return;
     setColors((prev) => ({ ...prev, [selectedPart]: hex }));
   };
 
   const getHex = (name) => colors[name] || "transparent";
+
+  // Preview: pedir color en todas las piezas
+  const handlePreview = () => {
+    if (Object.keys(colors).length < hoodieParts.length) {
+      setErrorMessage("Debes seleccionar el color de todas las piezas para ver el preview.");
+      setShakePreview(true);
+      setTimeout(() => setShakePreview(false), 400);
+      return;
+    }
+    setErrorMessage("");
+    setShowPreview(true);
+  };
+
+  // Next: pedir que al menos una pieza esté coloreada
+  const handleNextClick = () => {
+    if (Object.keys(colors).length < hoodieParts.length) {
+      setErrorMessage("Debes seleccionar el color de cada pieza antes de continuar.");
+      setShakeNext(true);
+      setTimeout(() => setShakeNext(false), 400);
+      return;
+    }
+    setErrorMessage("");
+    onNext();
+  };
 
   return (
     <div className="min-h-screen bg-[#3b0057] p-4 text-white space-y-2">
@@ -58,13 +86,11 @@ export default function HoodieStep3Color({ onNext }) {
       <div className="relative w-[440px] h-[380px] sm:h-[500px] mb-2 mr-20">
         {hoodieParts.map(({ name, image }) => (
           <div key={name} className="absolute inset-0">
-            {/* Base de la silueta */}
             <img
               src={image}
               alt={name}
               className="w-full h-full object-contain"
             />
-            {/* Capa coloreada usando mask */}
             {colors[name] && (
               <div
                 className="absolute inset-0"
@@ -98,10 +124,10 @@ export default function HoodieStep3Color({ onNext }) {
       {/* Acordeones */}
       <div className="space-y-2">
         {[
-          { title: "MANGAS", filters: ["mangas"] },
-          { title: "RIBS", filters: ["ribs", "fajon"] },
-          { title: "CAPUCHA", filters: ["capucha"] },
-          { title: "FRENTE Y ESPALDA", filters: ["frente", "espalda"] },
+          { title: "MANGAS", filters: ["Manga"] },
+          { title: "RIBS", filters: ["Rib", "Fajon"] },
+          { title: "CAPUCHA", filters: ["Capucha"] },
+          { title: "FRENTE Y ESPALDA", filters: ["Frente", "Espalda"] },
         ].map(({ title, filters }, i) => (
           <div key={i} className="bg-white/10 rounded-xl">
             <button
@@ -137,9 +163,9 @@ export default function HoodieStep3Color({ onNext }) {
 
       {/* Cordon fuera del acordeón */}
       <button
-        onClick={() => setSelectedPart("cordon")}
+        onClick={() => setSelectedPart("Cordon")}
         className={`w-full text-center border-2 p-2 rounded-xl transition-colors mb-5 ${
-          selectedPart === "cordon"
+          selectedPart === "Cordon"
             ? "bg-white text-black border-white"
             : "bg-purple-800 text-white border-white/30"
         }`}
@@ -147,7 +173,12 @@ export default function HoodieStep3Color({ onNext }) {
         Cordon
       </button>
 
-      {/* Vista previa */}
+      {/* Mensaje de error */}
+      {errorMessage && (
+        <p className="text-red-400 text-center mb-2">{errorMessage}</p>
+      )}
+
+      {/* Vista previa activada */}
       {showPreview && (
         <p className="text-center text-green-300">Vista previa activada</p>
       )}
@@ -161,14 +192,18 @@ export default function HoodieStep3Color({ onNext }) {
           Regresar
         </button>
         <button
-          onClick={() => setShowPreview(true)}
-          className="bg-yellow-300 text-purple-900 px-4 py-2 rounded-lg"
+          onClick={handlePreview}
+          className={`bg-yellow-300 text-purple-900 px-4 py-2 rounded-lg ${
+            shakePreview ? "shake" : ""
+          }`}
         >
           Preview
         </button>
         <button
-          onClick={onNext}
-          className="bg-green-400 text-purple-900 px-4 py-2 rounded-lg"
+          onClick={handleNextClick}
+          className={`bg-green-400 text-purple-900 px-4 py-2 rounded-lg ${
+            shakeNext ? "shake" : ""
+          }`}
         >
           Siguiente
         </button>

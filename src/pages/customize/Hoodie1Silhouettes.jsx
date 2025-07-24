@@ -1,16 +1,20 @@
+// src/pages/customize/HoodieSilhouettes.jsx
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import hoodie1 from "../../assets/hoodie1.webp";
 import hoodie2 from "../../assets/hoodie2.webp";
 import hoodie3 from "../../assets/hoodie3.webp";
 import hoodie4 from "../../assets/hoodie4.webp";
-import siluetaModalImage from "../../assets/silueta1Modal.png";
+import silueta1Modal from "../../assets/silueta1Modal.png";
+import silueta2Modal from "../../assets/silueta2Modal.png";
+import silueta3Modal from "../../assets/silueta3Modal.png";
+import silueta4Modal from "../../assets/silueta4Modal.png";
 
 const silhouettes = [
-  { id: "buzo1", label: "Manga Ranglan, Corte en manga", image: hoodie1 },
-  { id: "buzo2", label: "Manga Ranglan con Capucha", image: hoodie2 },
-  { id: "buzo3", label: "Manga Ranglan clásico", image: hoodie3 },
-  { id: "buzo4", label: "Hoodie clásico, corte en pecho", image: hoodie4 },
+  { id: "buzo1", label: "Manga Ranglan, Corte en manga", image: hoodie1, modalImage: silueta1Modal },
+  { id: "buzo2", label: "Manga Ranglan con Capucha", image: hoodie2, modalImage: silueta2Modal },
+  { id: "buzo3", label: "Manga Ranglan clásico", image: hoodie3, modalImage: silueta3Modal },
+  { id: "buzo4", label: "Hoodie clásico, corte en pecho", image: hoodie4, modalImage: silueta4Modal },
 ];
 
 export default function HoodieSilhouettes() {
@@ -18,20 +22,35 @@ export default function HoodieSilhouettes() {
   const [selected, setSelected] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [selectedModalImage, setSelectedModalImage] = useState(null);
+
+  // **Nuevos estados para validación y shake**
+  const [shakeButton, setShakeButton] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const scrollContainerRef = useRef(null);
 
-  const handleNext = () => {
-    if (selected) {
-      navigate("/customize/buzos/step2", { state: { selectedBuzo: selected } });
-    }
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  // Desplazar el scroll horizontal al abrir el fullscreen
   useEffect(() => {
     if (isFullScreen && scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft = 100; // puedes ajustar el valor
+      scrollContainerRef.current.scrollLeft = 100; // offset inicial
     }
   }, [isFullScreen]);
+
+  // Igual que en Step2Size
+  const handleNext = () => {
+    if (!selected) {
+      setErrorMessage("Por favor selecciona una silueta antes de continuar.");
+      setShakeButton(true);
+      setTimeout(() => setShakeButton(false), 400);
+      return;
+    }
+    setErrorMessage("");
+    navigate("/customize/buzos/step2", { state: { selectedBuzo: selected } });
+  };
 
   return (
     <div className="px-4 pt-6 pb-20 min-h-screen flex flex-col bg-[#2a004f]">
@@ -41,12 +60,13 @@ export default function HoodieSilhouettes() {
       </p>
 
       {/* Silueta cards */}
-      <div className="grid grid-cols-2 gap-4 sm:gap-8">
-        {silhouettes.map(({ id, label, image }) => (
+      <div className="grid grid-cols-2 gap-4 sm:gap-8 mb-6">
+        {silhouettes.map(({ id, label, image, modalImage }) => (
           <button
             key={id}
             onClick={() => {
               if (selected === id) {
+                setSelectedModalImage(modalImage);
                 setIsModalOpen(true);
               } else {
                 setSelected(id);
@@ -71,8 +91,13 @@ export default function HoodieSilhouettes() {
         ))}
       </div>
 
+      {/* Mensaje de error */}
+      {errorMessage && (
+        <p className="text-red-400 mt-2 text-center">{errorMessage}</p>
+      )}
+
       {/* Botones inferiores */}
-      <div className="mt-6 flex justify-between">
+      <div className="mt-6 flex justify-between items-center">
         <button
           onClick={() => navigate(-1)}
           className="bg-gray-700 text-white px-4 py-2 rounded-lg w-1/2 mr-2"
@@ -81,16 +106,16 @@ export default function HoodieSilhouettes() {
         </button>
         <button
           onClick={handleNext}
-          disabled={!selected}
           className={`px-4 py-2 rounded-lg text-white w-1/2 ml-2 ${
             selected
               ? "bg-blue-600 hover:bg-blue-700"
               : "bg-gray-400 cursor-not-allowed"
-          }`}
+          } ${shakeButton ? "shake" : ""}`}
         >
           Siguiente
         </button>
       </div>
+
 
       {/* Modal */}
       {isModalOpen && (
@@ -102,24 +127,25 @@ export default function HoodieSilhouettes() {
             className="relative bg-white p-4 rounded-md max-w-xl w-[90%]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón cerrar */}
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-2 right-2 text-gray-600 hover:text-black text-2xl"
             >
               ✕
             </button>
-
-            <img src={siluetaModalImage} alt="Vista ampliada" className="w-full h-auto rounded-md" />
-
+            <img
+              src={selectedModalImage}
+              alt="Vista ampliada"
+              className="w-full h-auto rounded-md mb-4"
+            />
             <button
               onClick={() => {
                 setIsModalOpen(false);
                 setIsFullScreen(true);
               }}
-              className="mt-3 px-4 py-2 bg-violet-800 text-white rounded-md flex items-center justify-center mx-auto"
+              className="px-4 py-2 bg-violet-800 text-white rounded-md flex items-center justify-center mx-auto"
             >
-              🔍 <span className="ml-2">Zoom</span>
+              🔍<span className="ml-2">Zoom</span>
             </button>
           </div>
         </div>
@@ -133,30 +159,24 @@ export default function HoodieSilhouettes() {
           onClick={() => setIsFullScreen(false)}
           style={{ cursor: "grab" }}
         >
-          {/* Contenedor de imagen y botón cerrar */}
           <div
             className="relative h-full flex items-start"
             style={{ width: "max-content" }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Imagen grande alineada a la izquierda */}
             <img
-              src={siluetaModalImage}
+              src={selectedModalImage}
               alt="Zoom completo"
               className="h-full object-contain"
               draggable={false}
             />
-
-            {/* Botón cerrar al final del scroll */}
             <button
               onClick={() => setIsFullScreen(false)}
-              className="absolute top-4 right-8 text-white text-4xl z-50"
+              className="absolute top-4 right-8 text-white text-5xl z-50"
             >
               ✕
             </button>
           </div>
-
-          {/* Texto centrado en la primera vista */}
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 text-white text-xl animate-pulse z-50">
             Desliza →
           </div>
