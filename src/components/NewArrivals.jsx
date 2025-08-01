@@ -10,45 +10,45 @@ import t6 from "../assets/tshirt6.jpg";
 const products = [
   {
     id: "1",
-    name: "T-shirt monkey fly",
-    price: 75,
+    name: "monkey fly",
+    price: "80.000 cop",
     image: t1,
     rating: 4.5,
   },
   {
     id: "2",
-    name: "T-shirt psico beach",
-    price: 80,
-    discount: 260,
+    name: "Psico beach",
+    price: "80.000 cop",
+    discount: 95,
     image: t2,
     rating: 4.3,
   },
   {
     id: "3",
-    name: "T-shirt japanese",
-    price: 80,
-    discount: 260,
+    name: "D2D japanese",
+    price: "80.000 cop",
+    discount: 95,
     image: t3,
     rating: 4.3,
   },
   {
     id: "4",
-    name: "T-shirt dirty bart",
-    price: 75,
+    name: "Dirty Bart",
+    price: "80.000 cop",
     image: t4,
     rating: 4.5,
   },
   {
     id: "5",
-    name: "T-shirt dirty bart black",
-    price: 80,
-    discount: 260,
+    name: "Dirty Bart black",
+    price: "80.000 cop",
+    discount: 90,
     image: t5,
     rating: 4.3,
   },
   {
     id: "6",
-    name: "T-shirt ",
+    name: "Drugrats white",
     price: 240,
     discount: 260,
     image: t6,
@@ -59,10 +59,10 @@ const products = [
 export default function NewArrivals() {
   return (
     <section className="px-4 mt-2">
-      <h2 className="text-xl font-semibold mb-6 text-white">NEW ARRIVALS</h2>
+      <h2 className="font-montserrat font-black text-2xl block mb-6 text-white">Nuevos Productos</h2>
 
-      {/* Listado normal */}
-      <div className="flex gap-4 overflow-x-auto pb-2 mb-2">
+      {/* Lista 1 */}
+      <div className="flex gap-4 overflow-x-auto pb-2 mb-1">
         {products.map((item) => (
           <Link
             key={item.id}
@@ -83,8 +83,8 @@ export default function NewArrivals() {
         ))}
       </div>
 
-      {/* Segunda fila (scroll inverso) */}
-      <div className="flex flex-row-reverse gap-4 overflow-x-auto">
+      {/* Lista 2  */}
+      <div className="flex gap-4 overflow-x-auto pb-2 mb-2">
         {products.map((item) => (
           <Link
             key={item.id}

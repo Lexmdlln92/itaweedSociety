@@ -18,8 +18,8 @@ import t11 from "../assets/tshirt11.png";
 import t12 from "../assets/tshirt12.png";
 
 const allProducts = [
-  { id: "1", name: "Camiseta monkey fly", category: "camisetas", price: 75, image: t1 },
-  { id: "2", name: "Camiseta psico beach", category: "camisetas", price: 80, image: t2 },
+  { id: "1", name: " Monkey fly", category: "camisetas", price: "80.000 cop", image: t1 },
+  { id: "2", name: "Psico beach", category: "camisetas", price: "80.000 cop", image: t2 },
   { id: "3", name: "Sudadera japonesa", category: "sudaderas", price: 80, image: t3 },
   { id: "4", name: "Buzo dirty bart", category: "buzos", price: 75, image: t4 },
   { id: "5", name: "Buzo black bart", category: "buzos", price: 80, image: t5 },
@@ -80,10 +80,13 @@ export default function ProductsPage() {
       {isNewPage && (
         <>
           <h1 className="text-center text-3xl sm:text-4xl font-bold mb-6">
-            New Arrivals
+            Recién llegados
           </h1>
           {/* Maquesina */}
-          <MarqueeText text="✨ Colecciones nuevas cada Mes" speed="12s"/>
+          <MarqueeText 
+            text="✨ Colecciones nuevas cada Mes"
+            speed="12s"
+            fontClass="font-dancing"/>
           {/* Filtros */}
           <div className="flex gap-3 overflow-x-auto pb-4 mt-6">
             <button

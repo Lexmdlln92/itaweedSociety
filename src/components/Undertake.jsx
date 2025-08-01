@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Undertake = () => {
   return (
-    <section className="py-14 px-4 md:px-10 bg-violet-700 text-white text-center">
+    <section className="py-14 px-4 md:px-10 #2a0a59 text-white text-center">
       <h2 className="text-3xl md:text-4xl font-bold mb-6">
-        Emprendé con <span className="text-amber-400">Itaweed Society</span>
+        Emprendé con <br /> <span className="text-amber-400">Itaweed Society</span>
       </h2>
       <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
         Sumate como creador o distribuidor. Te acompañamos a crear tu propia marca de ropa o 

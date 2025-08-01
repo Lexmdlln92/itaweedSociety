@@ -17,12 +17,20 @@ export default function Home() {
     <>
       <Navbar />
       <HeroSection />
-      <MarqueeText text="👽 D2D 🔥 LEX 👽 D2D 🔥 LEX 👽 D2D 🔥 LEX" />
+      <MarqueeText 
+        text="👽 D2D 🔥 LEX 👽 D2D 🔥 LEX " 
+        speed="10s" 
+        fontClass="font-londrina" 
+      />
       <NewArrivals />
       <BrandSection/>
       <CustomizationSection/>
       <StorieSection/>
-      <MarqueeText text="Los sueños son para ser perseguidos 24/7 ✨" speed="14s" />
+      <MarqueeText 
+        text="Los sueños son para ser perseguidos 24/7 ✨" 
+        speed="14s" 
+        fontClass="font-rock" 
+      />
       <Undertake />
       <Collaborations/>
       <States />

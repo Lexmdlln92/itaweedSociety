@@ -9,31 +9,10 @@ import buzo4 from "../assets/buzo4.png";
 
 const brands = [
   {
-    id: "universo-d2d",
-    title: "Universo D2D",
-    bgType: "color",
-    bg: "bg-black",
-    products: [
-      {
-        id: "10",
-        name: "Vertical Striped Shirt",
-        price: 212,
-        discount: 235,
-        image: buzo1,
-      },
-      {
-        id: "11",
-        name: "Courage Graphic Tee",
-        price: 145,
-        image: buzo2,
-      },
-    ],
-  },
-  {
     id: "vision-lex",
     title: "Vision LEX",
     bgType: "color",
-    bg: "bg-gradient-to-br from-[#3f0f4f] to-[#7d1c82]",
+    bg: "bg-gradient-to-br from-[#7d1c82][#3f0f4f] to-[#7d1c82]",
     products: [
       {
         id: "12",
@@ -50,6 +29,27 @@ const brands = [
       },
     ],
   },
+    {
+    id: "universo-d2d",
+    title: "Universo D2D",
+    bgType: "color",
+    bg: "bg-gradient-to-br from-[#7d1c82][#3f0f4f] to-[#7d1c82]",
+    products: [
+      {
+        id: "10",
+        name: "Vertical Striped Shirt",
+        price: 212,
+        discount: 235,
+        image: buzo1,
+      },
+      {
+        id: "11",
+        name: "Courage Graphic Tee",
+        price: 145,
+        image: buzo2,
+      },
+    ],
+  },
 ];
 
 export default function BrandSection() {
@@ -58,7 +58,7 @@ export default function BrandSection() {
       {brands.map((brand, idx) => (
         <div
           key={idx}
-          className={`rounded-lg mb-2`}
+          className={`rounded-lg`}
           style={
             brand.bgType === "image"
               ? { backgroundImage: `url(${brand.bgImage})` }
@@ -70,7 +70,7 @@ export default function BrandSection() {
               brand.bgType === "color" ? `${brand.bg} rounded-lg p-8` : ""
             }
           >
-            <h2 className="text-center text-white text-4xl sm:text-5xl font-extrabold uppercase tracking-wide mb-8 drop-shadow-md">
+            <h2 className="text-center text-white font-londrina text-6xl block mb-8">
               {brand.title}
             </h2>
 

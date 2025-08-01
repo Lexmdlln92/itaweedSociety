@@ -61,7 +61,7 @@ export default function Navbar() {
       {/* Overlay oscuro que aparece cuando el sidebar está abierto */}
       {isSidebarOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-500"
           onClick={closeSidebar}
         />
       )}
@@ -87,21 +87,21 @@ export default function Navbar() {
           {/* Secciones principales de productos */}
           <div className="border-gray-200">
             <Link 
-              to="/products/hombre" 
+              to="/sidebar/menPage" 
               onClick={closeSidebar}
               className="block px-6 py-4 text-gray-800 font-bold hover:bg-gray-50 transition-colors"
             >
               HOMBRE
             </Link>
             <Link 
-              to="/products/mujer" 
+              to="/sidebar/womanPage" 
               onClick={closeSidebar}
               className="block px-6 py-4 text-gray-800 font-bold hover:bg-gray-50 transition-colors"
             >
               MUJER
             </Link>
             <Link 
-              to="/products/cosas" 
+              to="/sidebar/thingsPage" 
               onClick={closeSidebar}
               className="block px-6 py-4 text-gray-800 font-bold hover:bg-gray-50 transition-colors"
             >

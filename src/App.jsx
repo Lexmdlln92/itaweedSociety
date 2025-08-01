@@ -18,6 +18,9 @@ import StatesPage from "./pages/StatesPage";
 import Hoodie1Silhouettes from "./pages/customize/Hoodie1Silhouettes";
 import HoodieStep2Size from "./pages/customize/HoodieStep2Size";
 import HoodieStep3Color from "./pages/customize/HoodieStep3Color";
+import Men from "./pages/sidebar/MenPage";
+import Woman from "./pages/sidebar/WomanPage";
+import Things from "./pages/sidebar/ThingsPage";
 
 function App() {
   return (
@@ -43,6 +46,9 @@ function App() {
           <Route path="/customize/buzos" element={<Hoodie1Silhouettes />} />
           <Route path="/customize/buzos/step2" element={<HoodieStep2Size />} />
           <Route path="/customize/buzos/step3" element={<HoodieStep3Color />} />
+          <Route path="/sidebar/menPage" element={<Men />} />
+          <Route path="/sidebar/womanPage" element={<Woman />} />
+          <Route path="/sidebar/thingsPage" element={<Things />} />
 
         </Routes>
       </main>

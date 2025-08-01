@@ -19,7 +19,7 @@ const stories = [
 
 const StorieSection = () => {
   return (
-    <section className="py-10 px-4 md:px-10 bg-black text-white mt-15">
+    <section className="py-10  md:px-10 bg-black text-white mt-15">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
         Historias detras de cada prenda by LEX
       </h2>
@@ -30,7 +30,7 @@ const StorieSection = () => {
             <img
               src={story.image}
               alt={story.title}
-              className="w-full h-64 object-cover rounded-xl shadow-md"
+              className="w-full h-64 object-cover shadow-md"
             />
             <h3 className="text-xl font-semibold mt-4">{story.title}</h3>
             <p className="text-amber-300 gray-600 mt-2">{story.description}</p>
