@@ -1,125 +1,219 @@
 // src/pages/ProductDetail.jsx
 import { useParams, useNavigate } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
+import { useState } from "react";
+import { FiChevronRight as FiBreadcrumbArrow } from "react-icons/fi";
 
-import t1_1 from "../assets/tshirt1-1.png";
-import t1_2 from "../assets/tshirt1-2.png";
-import t1_3 from "../assets/tshirt1-3.png";
-
-import t1 from "../assets/tshirt1.png";
-import t2 from "../assets/tshirt2.png";
-import t3 from "../assets/tshirt3.png";
-import t4 from "../assets/tshirt4.png";
-import t5 from "../assets/tshirt5.png";
-import t6 from "../assets/tshirt6.jpg";
-import t7 from "../assets/tshirt7.png";
-import t8 from "../assets/tshirt8.png";
-import t9 from "../assets/tshirt9.png";
-import t10 from "../assets/tshirt10.png";
-import t11 from "../assets/tshirt11.png";
-import t12 from "../assets/tshirt12.png";
-import buzo1 from "../assets/buzo1.png";
-import buzo2 from "../assets/buzo2.png";
-import buzo3 from "../assets/buzo3.png";
-import buzo4 from "../assets/buzo4.png";
-
-const mockProducts = {
-  "1": {
-    name: "Monkey fly",
-    price: "80.000 Cop",
-    // solo carga imagen genérica; usaremos el carrusel para las tres vistas
-    image: t1,
-    rating: 4.5,
-    description: "Camiseta urbana con silueta oversize, estampado original estilo manga street.",
-    size: "Disponible en tallas de la S a la XXL",
-  },
-  "2": {
-    name: "T-shirt psico beach",
-    price: "80.000 Cop",
-    discount: 95,
-    image: t2,
-    rating: 4.8,
-    description: "Edición limitada con gráfico psicodélico playero.",
-    size: "Disponible en tallas de la S a la XXL",
-  },
-  // ... (mantengo el resto igual)
-  "3": { name: "T-shirt japanese", price: 80, discount: 260, image: t3, rating: 4.3, description: "Tipografía japonesa...", size: "Disponible en tallas de la S a la XXL" },
-  "4": { name: "T-shirt dirty bart", price: 75, image: t4, rating: 4.5, description: "Bart Simpson con actitud grunge.", size: "Disponible en tallas de la S a la XXL" },
-  "5": { name: "T-shirt dirty bart black", price: 80, discount: 260, image: t5, rating: 4.3, description: "Versión dark...", size: "Disponible en tallas de la S a la XXL" },
-  "6": { name: "T-shirt básica premium", price: 240, discount: 260, image: t6, rating: 4.3, description: "Tejido premium...", size: "Disponible en tallas de la S a la XXL" },
-  "t7": { name: "Homero Smoking", price: 75, image: t7, rating: 4.5, description: "Buzo premium...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "t8": { name: "LEX Homero", price: 80, image: t8, rating: 4.7, description: "Edición especial...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "t9": { name: "Niño Rata", price: 240, image: t9, rating: 4.2, description: "Gorra irreverente...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "t10": { name: "Krusty Skull", price: 75, image: t10, rating: 4.4, description: "Buzo con cráneo...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "t11": { name: "Good Luck Black", price: 80, image: t11, rating: 4.6, description: "Diseño minimalista...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "t12": { name: "Dirty Bart Oversize", price: 240, image: t12, rating: 4.1, description: "Versión oversize...", size: "Disponible en tallas de la S a la XXL", brand: "vision-lex" },
-  "10": { name: "Vertical Striped Shirt", price: 212, discount: 235, image: buzo1, rating: 4.4, description: "Buzo con líneas...", size: "Disponible en tallas de la S a la XXL" },
-  "11": { name: "Courage Graphic Tee", price: 145, image: buzo2, rating: 4.6, description: "Remera urbana...", size: "Disponible en tallas de la S a la XXL" },
-  "12": { name: "Vertical Striped Shirt", price: 212, discount: 235, image: buzo3, rating: 4.2, description: "Otra variante...", size: "Disponible en tallas de la S a la XXL" },
-  "13": { name: "Courage Graphic Tee", price: 145, image: buzo4, rating: 4.7, description: "Edición limitada...", size: "Disponible en tallas de la S a la XXL" },
-};
+// Importar la nueva estructura de datos unificada
+import { getProductById } from "../data/productData";
 
 export default function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = mockProducts[id];
+  
+  // Obtener el producto usando la nueva función centralizada
+  // Esta función automáticamente busca en todas las categorías por el ID
+  const product = getProductById(id);
+  
+  // Estado para controlar qué imagen se está mostrando actualmente en el carrusel
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Si no existe el producto:
+  // Si no existe el producto, mostrar mensaje de error
   if (!product) {
     return (
       <div className="px-4 pt-20 text-white">
         <h1 className="text-2xl font-bold">Producto no encontrado</h1>
+        <p className="mt-4">El producto con ID "{id}" no existe en nuestro catálogo.</p>
+        <button 
+          onClick={() => navigate('/')} 
+          className="mt-4 px-4 py-2 bg-white text-black rounded hover:bg-gray-100 transition-colors"
+        >
+          Volver al inicio
+        </button>
       </div>
     );
   }
 
-  // Defino el array de imágenes para el carrusel
-  const imagesToShow =
-    id === "1" ? [t1,t1_1,t1_3,t1_2, ] : [product.image];
+  // Generar los elementos del breadcrumb usando la información del producto
+  // Cada producto ahora tiene su propia información de breadcrumb integrada
+  const breadcrumbItems = [
+    { name: "Home", route: "/" },
+    { 
+      name: product.breadcrumbCategory, 
+      route: product.breadcrumbRoute 
+    },
+    { name: product.name, route: null } // El producto actual no necesita ruta
+  ];
+
+  // Función para manejar la navegación del breadcrumb
+  const handleBreadcrumbClick = (route) => {
+    if (route) {
+      navigate(route);
+    }
+  };
+
+  // Determinar qué imágenes mostrar en el carrusel
+  // Si el producto tiene una galería específica, usarla; sino, usar solo la imagen principal
+  const imagesToShow = product.gallery || [product.image];
+  
+  // Función para ir directamente a una imagen específica
+  const goToImage = (index) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
-    <section className="px-4 pt-10 text-white bg-[#2a0a59] min-h-screen">
-      {/* 1. Flecha de regreso */}
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center text-white mb-4 space-x-2 text-center"
-      >
-        <FiArrowLeft className="text-6xl text-center" />
-        <span className="underline">Volver</span>
-      </button>
-
-      {/* Carrusel de imágenes */}
-      <div className="overflow-x-auto scrollbar-hide mb-6">
-        <div className="flex space-x-4">
-          {imagesToShow.map((src, idx) => (
-            <img
-              key={idx}
-              src={src}
-              alt={`${product.name} vista ${idx + 1}`}
-              className="flex-shrink-0 w-[80vw] sm:w-[300px] md:w-[400px] h-auto rounded-lg object-contain"
-            />
+    <section className="px-4 pt-10 text-white bg-[#2a0a59] min-h-screen max-w-4xl mx-auto">
+      {/* Sistema de navegación breadcrumb */}
+      <nav className="mb-6" aria-label="Breadcrumb">
+        <div className="flex items-center space-x-2 text-sm">
+          {breadcrumbItems.map((item, index) => (
+            <div key={index} className="flex items-center">
+              {/* Elemento del breadcrumb - renderizado condicional según si es navegable */}
+              {item.route ? (
+                // Elemento navegable - renderizado como botón interactivo
+                <button
+                  onClick={() => handleBreadcrumbClick(item.route)}
+                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
+                >
+                  {item.name}
+                </button>
+              ) : (
+                // Elemento actual - renderizado como texto estático (no clickeable)
+                <span className="text-white font-medium cursor-default">
+                  {item.name}
+                </span>
+              )}
+              
+              {/* Separador - no mostrar después del último elemento */}
+              {index < breadcrumbItems.length - 1 && (
+                <FiBreadcrumbArrow className="mx-1.5 text-gray-400 text-xs" />
+              )}
+            </div>
           ))}
+        </div>
+      </nav>
+
+      {/* Contenedor principal del producto */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        {/* Sección de imágenes */}
+        <div className="space-y-4">
+          {/* Imagen principal con navegación */}
+          <div className="relative  rounded-lg overflow-hidden">
+            <img
+              src={imagesToShow[currentImageIndex]}
+              alt={`${product.name} vista ${currentImageIndex + 1}`}
+              className="w-full rounded h-105"
+            />
+          </div>
+
+          {/* Miniaturas - solo mostrar si hay múltiples imágenes */}
+          {imagesToShow.length > 1 && (
+            <div className="flex space-x-4 overflow-x-auto pb-1">
+              {imagesToShow.map((src, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToImage(index)}
+                  className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
+                    currentImageIndex === index
+                      ? 'border-purple-400 opacity-100' 
+                      : 'border-gray-600 opacity-60 hover:opacity-80'
+                  }`}
+                >
+                  <img
+                    src={src}
+                    alt={`Miniatura ${index + 1}`}
+                    className="w-full h-full object-contain"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Información del producto */}
+        <div className="space-y-6">
+          <div>
+            <h1 className="text-3xl font-bold mb-3">{product.name}</h1>
+            
+            {/* Precio con mejor formato */}
+            <div className="flex items-center space-x-3 mb-3">
+              <span className="text-2xl font-bold text-white">
+                ${product.price}
+              </span>
+              {product.discount && (
+                <span className="text-lg line-through text-red-400">
+                  ${product.discount}
+                </span>
+              )}
+            </div>
+
+            {/* Rating con estrellas visuales */}
+            {product.rating && (
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <span key={i} className={i < Math.floor(product.rating) ? "★" : "☆"}>
+                      ★
+                    </span>
+                  ))}
+                </div>
+                <span className="text-sm text-gray-300">
+                  {product.rating} / 5
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* Categoría del producto */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Categoría</h3>
+            <p className="text-gray-300 capitalize">{product.category}</p>
+          </div>
+
+          {/* Descripción del producto */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Descripción</h3>
+            <p className="text-gray-300 leading-relaxed">
+              {product.description}
+            </p>
+          </div>
+
+          {/* Información de tallas */}
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold">Tallas disponibles</h3>
+            <p className="text-gray-300">{product.size}</p>
+          </div>
+
+          {/* Botón de agregar al carrito mejorado */}
+          <button className="w-full bg-white text-black py-3 px-6 rounded-lg font-bold hover:bg-gray-100 active:bg-gray-200 transition-colors text-lg">
+            Agregar al carrito
+          </button>
+
+          {/* Información adicional del producto */}
+          <div className="mt-3 p-4 bg-purple-900 bg-opacity-30 rounded-lg">
+            <h4 className="text-sm font-semibold mb-2 text-purple-200">Información adicional</h4>
+            <ul className="text-xs text-gray-300 space-y-1">
+              <li>• Envío gratis en compras superiores a $150.000</li>
+              <li>• Cambios y devoluciones hasta 30 días después de la compra</li>
+              <li>• Producto original con garantía de calidad</li>
+              <li>• Diseño exclusivo de la marca</li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Detalles del producto */}
-      <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
-      <div className="text-xl mt-1 mb-4">
-        <span className="font-semibold">${product.price}</span>
-        {product.discount && (
-          <span className="line-through text-red-400 ml-2">
-            ${product.discount}
-          </span>
-        )}
-      </div>
-      <p className="text-sm text-gray-300 mb-2">⭐ {product.rating} / 5</p>
-      <p className="mt-4 text-sm text-gray-300">{product.description}</p>
-      <p className="mt-2 text-sm text-gray-300">{product.size}</p>
-
-      {/* Botón agregar al carrito */}
-      <button className="mt-6 w-full bg-white text-black py-2 rounded-lg font-bold hover:bg-gray-200 transition">
-        Agregar al carrito
-      </button>
+      {/* Información para debugging (solo en desarrollo) */}
+      {process.env.NODE_ENV === 'development' && (
+        <div className="mt-8 p-4 bg-gray-800 rounded text-xs">
+          <p>Debug info:</p>
+          <p>Product ID: {id}</p>
+          <p>Product Name: {product.name}</p>
+          <p>Category: {product.category}</p>
+          <p>Breadcrumb Category: {product.breadcrumbCategory}</p>
+          <p>Breadcrumb Route: {product.breadcrumbRoute}</p>
+          <p>Images in Gallery: {imagesToShow.length}</p>
+        </div>
+      )}
     </section>
   );
 }

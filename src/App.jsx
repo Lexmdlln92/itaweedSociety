@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CustomizePage from "./pages/CustomizePage";
 import Navbar from "./components/Navbar";
-import ProductsPage from "./pages/ProductsPage";
+import NewArrivalsPage from "./pages/NewArrivalsPage";
 import ProductDetail from "./pages/ProductDetail";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
@@ -32,8 +32,8 @@ function App() {
           <Route path="/customize/:category" element={<CustomizePage />} />
           <Route path="/products/vision-lex" element={<VisionLEXPage />} />
           <Route path="/products/universo-d2d" element={<UniversoD2DPage />} />
-          <Route path="/products/new" element={<ProductsPage />} />
-          <Route path="/products/:category" element={<ProductsPage />} />
+          <Route path="/products/new" element={<NewArrivalsPage />} />
+          <Route path="/products/:category" element={<NewArrivalsPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />

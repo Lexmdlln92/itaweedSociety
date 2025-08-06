@@ -1,0 +1,542 @@
+// src/data/productData.js
+// ARCHIVO CENTRAL DE DATOS DE PRODUCTOS
+// Este archivo contiene toda la información de productos organizada por categorías
+// y es la única fuente de verdad para toda la aplicación
+
+// Importar todas las imágenes necesarias
+import t1 from "../assets/tshirt1.png";
+import t1_1 from "../assets/tshirt1-1.png";
+import t1_2 from "../assets/tshirt1-2.png";
+import t1_3 from "../assets/tshirt1-3.png";
+import t2 from "../assets/tshirt2.png";
+import t3 from "../assets/tshirt3.png";
+import t4 from "../assets/tshirt4.png";
+import t5 from "../assets/tshirt5.png";
+import t6 from "../assets/tshirt6.jpg";
+import t7 from "../assets/tshirt7.png";
+import t8 from "../assets/tshirt8.png";
+import t9 from "../assets/tshirt9.png";
+import t10 from "../assets/tshirt10.png";
+import t11 from "../assets/tshirt11.png";
+import t12 from "../assets/tshirt12.png";
+import buzo5 from "../assets/buzo5.png";
+import buzo from "../assets/buzo.png";
+import cap from "../assets/cap.png";
+import cap1 from "../assets/cap1.png";
+import sweatpants1 from "../assets/sweatpants1.png";
+import sweatpants2 from "../assets/sweatpants2.png";
+
+// ESTRUCTURA ORGANIZADA POR CATEGORÍAS
+// Cada categoría tiene sus productos con IDs únicos y consistentes
+
+export const productCategories = {
+  // PRODUCTOS RECIÉN LLEGADOS
+  // Estos son los productos más nuevos que aparecen en la página principal
+  newArrivals: [
+    {
+      id: "1",
+      name: "Monkey fly",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t1,
+      rating: 4.5,
+      description: "Camiseta urbana con silueta oversize, estampado original estilo manga street.",
+      size: "Disponible en tallas de la S a la XXL",
+      // Imágenes adicionales para el carrusel (solo este producto tiene múltiples vistas)
+      gallery: [t1, t1_1, t1_3, t1_2],
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "3",
+      name: "D2D japanese",
+      category: "camisetas",
+      price: "80.000 cop",
+      discount: "95.000 cop",
+      image: t3,
+      rating: 4.3,
+      description: "Tipografía japonesa con diseño contemporáneo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "5",
+      name: "Dirty Bart black",
+      category: "camisetas",
+      price: "80.000 cop",
+      discount: "90.000 cop",
+      image: t5,
+      rating: 4.3,
+      description: "Versión dark del clásico Dirty Bart.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "7",
+      name: "MAGICO Atardecer D2D",
+      category: "camisetas",
+      price: "75.000 cop",
+      image: t7,
+      rating: 4.5,
+      description: "Colores vibrantes diseño mágico.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "16",
+      name: "Drugsrats white",
+      category: "buzos",
+      price: "150.000 cop",
+      image: buzo5,
+      rating: 4.4,
+      description: "Buzo cómodo con diseño urbano exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "17",
+      name: "Lex Esmeralda",
+      category: "gorras",
+      price: "150.000 cop",
+      image: cap1,
+      rating: 4.4,
+      description: "Gorra premium con diseño esmeralda exclusivo.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    },
+    {
+      id: "14",
+      name: "Sudadera Artico",
+      category: "sudaderas",
+      price: "80.000 cop",
+      image: sweatpants1,
+      rating: 4.0,
+      description: "Sudadera cómoda con diseño ártico.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Recién llegados",
+      breadcrumbRoute: "/products/new"
+    }
+  ],
+
+  // CAMISETAS
+  // Todas las camisetas disponibles incluyendo las de recién llegados
+  camisetas: [
+    // Reutilizamos los productos de recién llegados que son camisetas
+    {
+      id: "1",
+      name: "Monkey fly",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t1,
+      rating: 4.5,
+      description: "Camiseta urbana con silueta oversize, estampado original estilo manga street.",
+      size: "Disponible en tallas de la S a la XXL",
+      gallery: [t1, t1_1, t1_3, t1_2],
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "2",
+      name: "Psico beach",
+      category: "camisetas",
+      price: "80.000 cop",
+      discount: "95.000 cop",
+      image: t2,
+      rating: 4.3,
+      description: "Edición limitada con gráfico psicodélico playero.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "3",
+      name: "D2D japanese",
+      category: "camisetas",
+      price: "80.000 cop",
+      discount: "95.000 cop",
+      image: t3,
+      rating: 4.3,
+      description: "Tipografía japonesa con diseño contemporáneo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "5",
+      name: "Dirty Bart black",
+      category: "camisetas",
+      price: "80.000 cop",
+      discount: "90.000 cop",
+      image: t5,
+      rating: 4.3,
+      description: "Versión dark del clásico Dirty Bart.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "7",
+      name: "MAGICO Atardecer D2D",
+      category: "camisetas",
+      price: "75.000 cop",
+      image: t7,
+      rating: 4.5,
+      description: "Colores vibrantes diseño mágico.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "8",
+      name: "LEX homero",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t8,
+      rating: 4.7,
+      description: "Edición especial LEX con Homero Simpson.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "9",
+      name: "Niño Rata",
+      category: "camisetas",
+      price: "240.000 cop",
+      image: t9,
+      rating: 4.2,
+      description: "Diseño irreverente y urbano.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "10",
+      name: "Krusty skull",
+      category: "camisetas",
+      price: "75.000 cop",
+      image: t10,
+      rating: 4.4,
+      description: "Krusty con diseño de calavera.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "11",
+      name: "Good luck black",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t11,
+      rating: 4.6,
+      description: "Diseño minimalista de buena suerte.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "12",
+      name: "Dirty bart oversize",
+      category: "camisetas",
+      price: "240.000 cop",
+      image: t12,
+      rating: 4.1,
+      description: "Versión oversize del clásico Dirty Bart.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+    {
+      id: "18",
+      name: "Drugrats t-shirt",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t6,
+      rating: 4.0,
+      description: "Camiseta con diseño retro de los Rugrats.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    }
+  ],
+
+  // BUZOS
+  buzos: [
+    {
+      id: "4",
+      name: "Dirty Bart",
+      category: "buzos",
+      price: "80.000 cop",
+      image: t4,
+      rating: 4.5,
+      description: "Bart Simpson con actitud grunge.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Buzos",
+      breadcrumbRoute: "/products/buzos"
+    },
+    {
+      id: "16",
+      name: "Drugsrats white",
+      category: "buzos",
+      price: "150.000 cop",
+      image: buzo5,
+      rating: 4.4,
+      description: "Buzo cómodo con diseño urbano exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Buzos",
+      breadcrumbRoute: "/products/buzos"
+    },
+    {
+      id: "19",
+      name: "Siempre Alegre black",
+      category: "buzos",
+      price: "150.000 cop",
+      image: buzo,
+      rating: 4.4,
+      description: "Buzo con mensaje positivo en diseño oscuro.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Buzos",
+      breadcrumbRoute: "/products/buzos"
+    }
+  ],
+
+  // GORRAS
+  gorras: [
+    {
+      id: "6",
+      name: "Gorra Black Lex",
+      category: "gorras",
+      price: "60.000 cop",
+      discount: "260.000 cop",
+      image: cap,
+      rating: 4.3,
+      description: "Gorra premium con diseño clásico negro.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Gorras",
+      breadcrumbRoute: "/products/gorras"
+    },
+    {
+      id: "17",
+      name: "Lex Esmeralda",
+      category: "gorras",
+      price: "150.000 cop",
+      image: cap1,
+      rating: 4.4,
+      description: "Gorra premium con diseño esmeralda exclusivo.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Gorras",
+      breadcrumbRoute: "/products/gorras"
+    }
+  ],
+
+  // SUDADERAS
+  sudaderas: [
+    {
+      id: "14",
+      name: "Sudadera Artico",
+      category: "sudaderas",
+      price: "80.000 cop",
+      image: sweatpants1,
+      rating: 4.0,
+      description: "Sudadera cómoda con diseño ártico.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Sudaderas",
+      breadcrumbRoute: "/products/sudaderas"
+    },
+    {
+      id: "15",
+      name: "Sudadera raton",
+      category: "sudaderas",
+      price: "100.000 cop",
+      image: sweatpants2,
+      rating: 4.4,
+      description: "Sudadera con diseño de ratón vintage.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Sudaderas",
+      breadcrumbRoute: "/products/sudaderas"
+    }
+  ],
+
+  // VISION LEX - Colección especial con tecnología y estilo vanguardista
+  visionLex: [
+    {
+      id: "21",
+      name: "LEX Homero Premium",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t8,
+      rating: 4.7,
+      description: "Edición premium LEX con Homero Simpson - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "22",
+      name: "Niño Rata Premium",
+      category: "camisetas",
+      price: "240.000 cop",
+      image: t9,
+      rating: 4.2,
+      description: "Diseño irreverente premium con acabados de alta calidad.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "23",
+      name: "Krusty Skull Premium",
+      category: "camisetas",
+      price: "75.000 cop",
+      image: t10,
+      rating: 4.4,
+      description: "Krusty con diseño de calavera - edición Vision LEX.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "24",
+      name: "Good Luck Black Premium",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t11,
+      rating: 4.6,
+      description: "Diseño minimalista de buena suerte con tecnología textil avanzada.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "25",
+      name: "Dirty Bart Oversize Premium",
+      category: "camisetas",
+      price: "240.000 cop",
+      image: t12,
+      rating: 4.1,
+      description: "Versión oversize premium del clásico Dirty Bart con materiales de lujo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "26",
+      name: "Gorra Black LEX Premium",
+      category: "gorras",
+      price: "60.000 cop",
+      image: cap,
+      rating: 4.3,
+      description: "Gorra premium con diseño clásico negro - colección Vision LEX.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "27",
+      name: "LEX Esmeralda Premium",
+      category: "gorras",
+      price: "60.000 cop",
+      image: cap1,
+      rating: 4.3,
+      description: "Gorra premium esmeralda con tecnología de materiales avanzados.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "28",
+      name: "Sudadera Ártico Premium",
+      category: "sudaderas",
+      price: "90.000 cop",
+      image: sweatpants1,
+      rating: 4.5,
+      description: "Sudadera premium con diseño ártico y tecnología térmica.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "29",
+      name: "Sudadera Ratón Premium",
+      category: "sudaderas",
+      price: "90.000 cop",
+      image: sweatpants2,
+      rating: 4.4,
+      description: "Sudadera premium con diseño de ratón vintage y materiales de alta gama.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "30",
+      name: "Drugsrats White Premium",
+      category: "buzos",
+      price: "150.000 cop",
+      image: buzo5,
+      rating: 4.4,
+      description: "Buzo premium con diseño urbano exclusivo y tecnología textil avanzada.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "31",
+      name: "Siempre Alegre Black Premium",
+      category: "buzos",
+      price: "150.000 cop",
+      image: buzo,
+      rating: 4.4,
+      description: "Buzo premium con mensaje positivo y materiales de lujo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    }
+  ]
+};
+
+// FUNCIONES AUXILIARES PARA ACCEDER A LOS DATOS
+
+// Obtener todos los productos en un array plano (útil para búsquedas)
+export const getAllProducts = () => {
+  const allProducts = [];
+  Object.values(productCategories).forEach(categoryProducts => {
+    categoryProducts.forEach(product => {
+      // Evitar duplicados (productos que aparecen en múltiples categorías)
+      if (!allProducts.find(p => p.id === product.id)) {
+        allProducts.push(product);
+      }
+    });
+  });
+  return allProducts;
+};
+
+// Obtener un producto específico por ID
+export const getProductById = (id) => {
+  const allProducts = getAllProducts();
+  return allProducts.find(product => product.id === id);
+};
+
+// Obtener productos por categoría específica
+export const getProductsByCategory = (category) => {
+  return productCategories[category] || [];
+};
+
+// Obtener las categorías disponibles para filtros
+export const getAvailableCategories = () => {
+  return Object.keys(productCategories).filter(cat => cat !== 'newArrivals');
+};
+
+// Obtener productos de Vision LEX específicamente
+export const getVisionLexProducts = () => {
+  return productCategories.visionLex || [];
+};
+
+// Función para convertir precio string a número (para ordenamiento)
+export const convertPriceToNumber = (priceString) => {
+  return parseInt(priceString.replace(/[^\d]/g, '')) || 0;
+};

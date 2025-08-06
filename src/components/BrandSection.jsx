@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 //import bgD2D from "../assets/d2d-universo.png";
 import buzo1 from "../assets/buzo1.png";
 import buzo2 from "../assets/buzo2.png";
-import buzo3 from "../assets/buzo3.png";
-import buzo4 from "../assets/buzo4.png";
+import buzo3 from "../assets/silueta1Modal.png";
+import buzo4 from "../assets/silueta2Modal.png";
 
 
 const brands = [

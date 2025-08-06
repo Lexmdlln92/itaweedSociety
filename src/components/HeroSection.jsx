@@ -98,7 +98,7 @@ export default function HeroSection() {
           }}
           className="font-dancing text-3xl text-purple-300 inline-block"
         >
-          %100 Colombiano
+          %100 Colombianos
         </motion.div>
         
         <br />
