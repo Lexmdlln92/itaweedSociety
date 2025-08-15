@@ -13,22 +13,18 @@ import {
 } from "../data/productData";
 
 export default function NewArrivalsPage() {
-  const { category } = useParams(); // Obtener la categoría de la URL
+  const { category } = useParams(); 
   const location = useLocation();
-  const isNewPage = location.pathname === "/products/new"; // Verificar si estamos en la página "new"
+  const isNewPage = location.pathname === "/products/new";
 
-  // Estados principales para el manejo de productos y filtros
   const [activeFilter, setActiveFilter] = useState("todos");
   const [filtered, setFiltered] = useState([]);
   const [sortOrder, setSortOrder] = useState("default");
-
-  // Estados para paginación - Es crucial que estos se inicialicen correctamente
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
 
-  // Obtener las categorías disponibles para los filtros
-  // Importante: esto excluye automáticamente 'newArrivals' que es solo para organización interna
-  const filterOptions = getAvailableCategories();
+  // Obtener las categorías disponibles y eliminar 'visionLex' para esta vista
+  const filterOptions = getAvailableCategories().filter(cat => cat !== 'visionLex');
 
   // PASO 1: Aplicar ordenamiento a los productos filtrados
   // Este paso es crítico para la paginación - debemos ordenar ANTES de paginar

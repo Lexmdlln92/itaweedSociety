@@ -376,6 +376,30 @@ export const productCategories = {
       breadcrumbCategory: "Visión LEX",
       breadcrumbRoute: "/products/vision-lex"
     },
+        {
+      id: "27",
+      name: "LEX Esmeralda Premium",
+      category: "gorras",
+      price: "60.000 cop",
+      image: cap1,
+      rating: 4.3,
+      description: "Gorra premium esmeralda con tecnología de materiales avanzados.",
+      size: "Talla única ajustable",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+        {
+      id: "28",
+      name: "Sudadera Ártico Premium",
+      category: "sudaderas",
+      price: "90.000 cop",
+      image: sweatpants1,
+      rating: 4.5,
+      description: "Sudadera premium con diseño ártico y tecnología térmica.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
     {
       id: "22",
       name: "Niño Rata Premium",
@@ -436,30 +460,7 @@ export const productCategories = {
       breadcrumbCategory: "Visión LEX",
       breadcrumbRoute: "/products/vision-lex"
     },
-    {
-      id: "27",
-      name: "LEX Esmeralda Premium",
-      category: "gorras",
-      price: "60.000 cop",
-      image: cap1,
-      rating: 4.3,
-      description: "Gorra premium esmeralda con tecnología de materiales avanzados.",
-      size: "Talla única ajustable",
-      breadcrumbCategory: "Visión LEX",
-      breadcrumbRoute: "/products/vision-lex"
-    },
-    {
-      id: "28",
-      name: "Sudadera Ártico Premium",
-      category: "sudaderas",
-      price: "90.000 cop",
-      image: sweatpants1,
-      rating: 4.5,
-      description: "Sudadera premium con diseño ártico y tecnología térmica.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Visión LEX",
-      breadcrumbRoute: "/products/vision-lex"
-    },
+
     {
       id: "29",
       name: "Sudadera Ratón Premium",
