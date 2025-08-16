@@ -134,23 +134,23 @@ export default function NewArrivalsPage() {
   });
 
   return (
-    <section className="px-4 pt-10 text-white">
+    <section className="px-4 pt-3 text-white">
       {/* Título y contenido especial para la página "new" */}
       {isNewPage && (
         <>
-          <h1 className="text-center text-3xl sm:text-4xl font-bold mb-4">
+          <h1 className="text-center text-3xl sm:text-4xl font-bold mb-2">
             Recién llegados
           </h1>
           
           {/* Marquesina */}
           <MarqueeText 
-            text="✨ Colecciones nuevas cada Mes"
+            text="✨ Prendas Nuevas cada Mes"
             speed="12s"
             fontClass="font-dancing"
           />
           
           {/* Filtros - Solo mostrar en la página de recién llegados */}
-          <div className="flex gap-3 overflow-x-auto pb-4 mt-4">
+          <div className="flex gap-3 overflow-x-auto pb-4 mt-2">
             <button
               onClick={() => handleFilterChange("todos")}
               className={`px-4 py-1 rounded-full border ${

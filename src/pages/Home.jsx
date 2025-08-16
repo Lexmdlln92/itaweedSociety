@@ -1,16 +1,17 @@
-// src/pages/Home.jsx
+import React, { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
-import NewArrivals from "../components/NewArrivals";
-import BrandSection from "../components/BrandSection";
-import CustomizationSection from "../components/CustomizationSection";
-import StorieSection from "../components/StorieSection";
-import Undertake from "../components/Undertake";
-import Collaborations from "../components/Collaborations";
-import States from "../components/States";
-import Footer from "../components/Footer";
 import MarqueeText from "../components/MarqueeText";
+import Footer from "../components/Footer";
 
+// Importación dinámica
+const NewArrivals = React.lazy(() => import("../components/NewArrivals"));
+const BrandSection = React.lazy(() => import("../components/BrandSection"));
+const CustomizationSection = React.lazy(() => import("../components/CustomizationSection"));
+const StorieSection = React.lazy(() => import("../components/StorieSection"));
+const Undertake = React.lazy(() => import("../components/Undertake"));
+const Collaborations = React.lazy(() => import("../components/Collaborations"));
+const States = React.lazy(() => import("../components/States"));
 
 export default function Home() {
   return (
@@ -22,20 +23,22 @@ export default function Home() {
         speed="10s" 
         fontClass="font-londrina" 
       />
-      <NewArrivals />
-      <BrandSection/>
-      <CustomizationSection/>
-      <StorieSection/>
-      <MarqueeText 
+      <Suspense>
+        <NewArrivals />
+        <BrandSection/>
+        <CustomizationSection/>
+        <StorieSection/>
+        <MarqueeText 
         text="Los sueños son para ser perseguidos 24/7 ✨" 
         speed="14s" 
         fontClass="font-rock" 
-      />
-      <Undertake />
-      <Collaborations/>
-      <States />
+        />
+        <Undertake />
+        <Collaborations/>
+        <States />
+      </Suspense>
+
       <Footer/>
-      {/* Newsletter, Footer */}
     </>
   );
 }
