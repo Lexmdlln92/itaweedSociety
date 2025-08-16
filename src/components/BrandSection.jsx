@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 // LEX Brand Assets
-import lexLogo from "../assets/brandSectionLex/logo lex.png";
+import lexLogo from "../assets/brandSectionLex/logo LEX.png";
 import lexCover1 from "../assets/brandSectionLex/lexcover1.png";
 import lexCover2 from "../assets/brandSectionLex/lexcover2.png";
 import lexCover3 from "../assets/brandSectionLex/lexcover3.png";
