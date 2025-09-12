@@ -1,5 +1,5 @@
 // src/components/CustomizationSection.jsx
-import camisetas from "../assets/TshirtD2D.png";
+import camisetas from "../assets/tshirtD2D.png";
 import buzos from "../assets/hoodieD2D.png";
 import sudaderas from "../assets/sweatpantsD2D.png";
 import pantalonetas from "../assets/shortD2D.png";
