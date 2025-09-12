@@ -6,7 +6,7 @@ import state5 from "../assets/state5.png";
 import state6 from "../assets/state6.png";
 import { Link } from "react-router-dom";
 
-const images = [state1, state2, state3, state4, state5, state6];
+const images = [state5, state6, state3, state4,state1, state2, ];
 
 const States = () => {
   return (

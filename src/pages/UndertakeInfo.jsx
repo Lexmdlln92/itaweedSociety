@@ -16,6 +16,16 @@ const UndertakeInfo = () => {
             ayudamos con diseño, producción, y canales de venta. Todo en un
             solo lugar y con calidad premium.
           </p>
+        <div className="mt-10 text-center">
+          <a
+            href="https://wa.me/XXXXXXXXXXX"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-2 border-2 border-white text-white rounded-full text-lg hover:bg-white hover:text-black transition"
+          >
+            consultar mas
+          </a>
+        </div>
         </div>
 
         <div>
@@ -23,7 +33,7 @@ const UndertakeInfo = () => {
             🤝 Sé un distribuidor oficial
           </h2>
           <p>
-            Unite como revendedor de nuestras colecciones. Accedé a productos
+            Unete como revendedor de nuestras colecciones. Accedé a productos
             exclusivos, con stock limitado y beneficios especiales para
             vendedores.
           </p>
@@ -39,7 +49,7 @@ const UndertakeInfo = () => {
             rel="noopener noreferrer"
             className="px-6 py-2 border-2 border-white text-white rounded-full text-lg hover:bg-white hover:text-black transition"
           >
-            Escribinos por WhatsApp
+            Escribenos por WhatsApp
           </a>
         </div>
       </div>

@@ -78,12 +78,12 @@ export default function VisionLEXPage() {
   }, []);
 
   return (
-    <section className="text-white bg-gradient-to-br from-[#3f0f4f] to-[#7d1c82] min-h-screen">
+    <section className="text-white bg-gradient-to-br from-[#3f0f4f] to-[#7d1c82] min-h-screen pb-6">
       {/* HERO PARALLAX - Solo se muestra cuando activeFilter es "todos" */}
       {activeFilter === "todos" && <HeroParallax />}
 
       <div className={activeFilter === "todos" ? "" : "pt-8"}>
-        <h1 className="text-center text-3xl font-bold mb-2 uppercase">
+        <h1 className="text-center text-3xl font-bold mb-2 mt-6 uppercase">
           VISIÓN LEX
         </h1>
         <p className="text-center text-sm text-gray-300 mb-4">
@@ -91,7 +91,7 @@ export default function VisionLEXPage() {
         </p>
 
         {/* Filtros */}
-        <div className="flex gap-3 overflow-x-auto pb-4 m-3">
+        <div className="flex gap-3 overflow-x-auto pb-4 m-3 scrollbar-hide">
           {filterOptions.map((filterValue) => (
             <button
               key={filterValue}
@@ -183,7 +183,7 @@ export default function VisionLEXPage() {
 
         {/* Info de paginación */}
         {totalPages > 1 && (
-          <div className="text-center mt-4 mb-8 text-sm text-gray-300">
+          <div className="text-center mt-4 text-sm text-gray-300">
             Página {currentPage} de {totalPages} • Mostrando {paginated.length} de {sorted.length} productos
           </div>
         )}

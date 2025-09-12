@@ -216,6 +216,29 @@ body {
 }
 
 /* ========================================
+   🔄 SCROLLBAR PERSONALIZADO PARA MENÚ DESLIZANTE
+   ======================================== */
+
+/* Oculta scrollbar pero mantiene funcionalidad */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* ========================================
+   💡 MEJORAS ADICIONALES PARA EL COMPONENTE
+   ======================================== */
+
+/* Smooth scroll horizontal para el menú de categorías */
+.scrollbar-hide {
+  scroll-behavior: smooth;
+}
+
+/* ========================================
    📝 NOTAS PARA DESARROLLADORES
    ========================================
    

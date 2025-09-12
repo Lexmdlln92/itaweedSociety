@@ -13,7 +13,6 @@ import t3 from "../assets/tshirt3.png";
 import t4 from "../assets/tshirt4.png";
 import t5 from "../assets/tshirt5.png";
 import t6 from "../assets/tshirt6.jpg";
-import t7 from "../assets/tshirt7.png";
 import t8 from "../assets/tshirt8.png";
 import t9 from "../assets/tshirt9.png";
 import t10 from "../assets/tshirt10.png";
@@ -25,6 +24,17 @@ import cap from "../assets/cap.png";
 import cap1 from "../assets/cap1.png";
 import sweatpants1 from "../assets/sweatpants1.png";
 import sweatpants2 from "../assets/sweatpants2.png";
+import sweatpantsD2D from "../assets/sweatpants1D2D.png";
+import sweatpants1D2D from "../assets/sweatpants2D2D.png";
+import tshirt1D2D from "../assets/tshirt1D2D.png";
+import tshirt2D2D from "../assets/tshirt2D2D.png";
+import tshirt3D2D from "../assets/tshirt3D2D.png";
+import tshirt4D2D from "../assets/tshirt4D2D.png";
+import tshirt5D2D from "../assets/tshirt5D2D.png";
+import hoodie1D2D from "../assets/hoodie1D2D.png";
+import hoodie2D2D from "../assets/hoodie2D2D.png";
+import cap1D2D from "../assets/cap1D2D.png";
+import cap2D2D from "../assets/capD2D.png";
 
 // ESTRUCTURA ORGANIZADA POR CATEGORÍAS
 // Cada categoría tiene sus productos con IDs únicos y consistentes
@@ -73,18 +83,7 @@ export const productCategories = {
       breadcrumbCategory: "Recién llegados",
       breadcrumbRoute: "/products/new"
     },
-    {
-      id: "7",
-      name: "MAGICO Atardecer D2D",
-      category: "camisetas",
-      price: "75.000 cop",
-      image: t7,
-      rating: 4.5,
-      description: "Colores vibrantes diseño mágico.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Recién llegados",
-      breadcrumbRoute: "/products/new"
-    },
+    
     {
       id: "16",
       name: "Drugsrats white",
@@ -175,18 +174,6 @@ export const productCategories = {
       image: t5,
       rating: 4.3,
       description: "Versión dark del clásico Dirty Bart.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Camisetas",
-      breadcrumbRoute: "/products/camisetas"
-    },
-    {
-      id: "7",
-      name: "MAGICO Atardecer D2D",
-      category: "camisetas",
-      price: "75.000 cop",
-      image: t7,
-      rating: 4.5,
-      description: "Colores vibrantes diseño mágico.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Camisetas",
       breadcrumbRoute: "/products/camisetas"
@@ -406,6 +393,7 @@ export const productCategories = {
       category: "camisetas",
       price: "240.000 cop",
       image: t9,
+      gallery: [t9, t1_1, t1_3, t1_2],//este galeri asi de facil agrega las 4 vistas miniatura del producto
       rating: 4.2,
       description: "Diseño irreverente premium con acabados de alta calidad.",
       size: "Disponible en tallas de la S a la XXL",
@@ -497,6 +485,149 @@ export const productCategories = {
       breadcrumbCategory: "Visión LEX",
       breadcrumbRoute: "/products/vision-lex"
     }
+  ],
+  universoD2D: [
+    {
+      id: "39",
+      name: "phychedelic",
+      category: "buzos",
+      price: "170.000 cop",
+      image: hoodie1D2D,
+      rating: 4.7,
+      description: "Edición premium Buzo - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    {
+      id: "41",
+      name: "gorrita D2D",
+      category: "gorras",
+      price: "70.000 cop",
+      image: cap1D2D,
+      rating: 4.7,
+      description: "Edición premium gorra new era - Ajustable",
+      size: "Disponible en tallas unica",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+        {
+      id: "32",
+      name: "sudadera gris D2D",
+      category: "sudaderas",
+      price: "100.000 cop",
+      image: sweatpantsD2D,
+      rating: 4.7,
+      description: "Edición premium sudadera  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+        {
+      id: "34",
+      name: "camiseta Oversize luna",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: tshirt1D2D,
+      rating: 4.7,
+      description: "Edición premium sudadera  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    {
+      id: "40",
+      name: "familia Dog",
+      category: "buzos",
+      price: "160.000 cop",
+      image: hoodie2D2D,
+      rating: 4.7,
+      description: "Edición premium Buzo - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+
+
+        
+    {
+      id: "42",
+      name: "gorrita cielo D2D",
+      category: "gorras",
+      price: "80.000 cop",
+      image: cap2D2D,
+      rating: 4.7,
+      description: "Edición premium gorra new era - Ajustable",
+      size: "Disponible en tallas unica",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    {
+      id: "35",
+      name: "oversize Dragon D2D",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: tshirt2D2D,
+      rating: 4.7,
+      description: "Edición premium sudadera  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    {
+      id: "33",
+      name: "sudadera naranja D2D",
+      category: "sudaderas",
+      price: "120.000 cop",
+      image: sweatpants1D2D,
+      rating: 4.7,
+      description: "Edición premium sudadera  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    {
+      id: "36",
+      name: "oversize amanecer D2D",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: tshirt3D2D,
+      rating: 4.7,
+      description: "Edición premium sudadera  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+    
+
+    {
+      id: "37",
+      name: "oversize amanecer D2D",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: tshirt4D2D,
+      rating: 4.7,
+      description: "Edición premium camiseta  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+        
+    {
+      id: "38",
+      name: "alien D2D",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: tshirt5D2D,
+      rating: 4.7,
+      description: "Edición premium camiseta  - diseño exclusivo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Universo D2D",
+      breadcrumbRoute: "/products/universo-d2d"
+    },
+
+
+
   ]
 };
 
@@ -536,8 +667,13 @@ export const getAvailableCategories = () => {
 export const getVisionLexProducts = () => {
   return productCategories.visionLex || [];
 };
+// Obtener productos de Universo D2D específicamente
+export const getUniversoD2DProducts = () => {
+  return productCategories.universoD2D || [];
+};
 
 // Función para convertir precio string a número (para ordenamiento)
 export const convertPriceToNumber = (priceString) => {
   return parseInt(priceString.replace(/[^\d]/g, '')) || 0;
 };
+

@@ -1,67 +1,190 @@
-// src/pages/UniversoD2DPage.jsx
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import buzo1 from "../assets/buzo1.png";
-import buzo2 from "../assets/buzo2.png";
-import buzo3 from "../assets/buzo3.png";
-import buzo4 from "../assets/buzo4.png";
+// src/pages/VisionLEXPage.jsx
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-const allProducts = [
-  { id: "10", name: "Vertical Striped Shirt", category: "buzos", price: 212, image: buzo1 },
-  { id: "11", name: "Courage Graphic Tee", category: "camisetas", price: 145, image: buzo2 },
-  { id: "12", name: "Vertical Striped Shirt", category: "sudaderas", price: 212, image: buzo3 },
-  { id: "13", name: "Courage Graphic Tee", category: "gorras", price: 145, image: buzo4 },
-];
+// Importar la estructura de datos unificada
+import { 
+  getUniversoD2DProducts, 
+  convertPriceToNumber 
+} from "../data/productData";
 
-const categories = ["todos", "buzos", "camisetas", "sudaderas", "gorras"];
+// Importar el hero parallax
 
-export default function UniversoD2DPage() {
-  const [activeCategory, setActiveCategory] = useState("todos");
+export default function VisionLEXPage() {
+  const { category } = useParams();
+  
+  const [activeFilter, setActiveFilter] = useState("todos");
+  const [filtered, setFiltered] = useState([]);
+  const [sortOrder, setSortOrder] = useState("default");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
 
-  const filtered =
-    activeCategory === "todos"
-      ? allProducts
-      : allProducts.filter((p) => p.category === activeCategory);
+  // Obtener productos de Universo D2D desde la fuente unificada
+  const universoD2DProducts = getUniversoD2DProducts();
+
+  // Obtener categorías únicas de Universo D2D para filtros
+  const filterOptions = ["todos", ...new Set(universoD2DProducts.map(p => p.category))];
+
+  // Ordenamiento
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortOrder === "price-low") {
+      return convertPriceToNumber(a.price) - convertPriceToNumber(b.price);
+    }
+    if (sortOrder === "price-high") {
+      return convertPriceToNumber(b.price) - convertPriceToNumber(a.price);
+    }
+    return 0;
+  });
+
+  // Paginación
+  const totalPages = Math.ceil(sorted.length / itemsPerPage);
+  const paginated = sorted.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Filtrado inicial y responder a cambios de categoría
+  useEffect(() => {
+    if (category && filterOptions.includes(category)) {
+      setFiltered(universoD2DProducts.filter(p => p.category === category));
+      setActiveFilter(category);
+    } else {
+      setFiltered(universoD2DProducts);
+      setActiveFilter("todos");
+    }
+    setCurrentPage(1);
+  }, [category, universoD2DProducts]);
+
+  // Cambiar filtro manual
+  const handleFilter = (filterValue) => {
+    const productsToShow = filterValue === "todos"
+      ? universoD2DProducts
+      : universoD2DProducts.filter(p => p.category === filterValue);
+    setFiltered(productsToShow);
+    setActiveFilter(filterValue);
+    setCurrentPage(1);
+  };
+
+  // Cambiar página
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Scroll al top al montar
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <section className="px-4 pt-5 text-white">
-      <h1 className="text-center text-3xl sm:text-4xl font-bold mb-2 uppercase">
-        UNIVERSO D2D
-      </h1>
-      <p className="text-center text-sm text-gray-300 mb-4">
-        Descubre la colección urbana que define tu estilo auténtico.
-      </p>
+    <section className="text-white bg-gradient-to-br from-[#0f4f1a] to-[#1bb754] min-h-screen pb-6">
+      //{/* HERO PARALLAX - Solo se muestra cuando activeFilter es "todos" */}
 
-      {/* Filtros */}
-      <div className="flex gap-3 overflow-x-auto pb-4">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={`px-4 py-1 rounded-full border ${
-              activeCategory === cat
-                ? "bg-white text-black border-white"
-                : "border-white text-white"
-            } text-sm whitespace-nowrap transition`}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <div className={activeFilter === "todos" ? "" : "pt-8"}>
+        <h1 className="text-center text-3xl font-bold mb-2 mt-6 uppercase">
+          UNIVERSO D2D
+        </h1>
+        <p className="text-center text-sm text-gray-300 mb-4">
+          Descubre la colección urbana que define tu estilo auténtico.
+        </p>
 
-      {/* Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-4">
-        {filtered.map((item) => (
-          <Link
-            to={`/product/${item.id}`}
-            key={item.id}
-            className="bg-white p-2 rounded shadow text-black hover:scale-105 transition-transform"
+        {/* Filtros */}
+        <div className="flex gap-3 overflow-x-auto pb-4 m-3">
+          {filterOptions.map((filterValue) => (
+            <button
+              key={filterValue}
+              onClick={() => handleFilter(filterValue)}
+              className={`px-4 py-1 rounded-full border text-sm whitespace-nowrap transition-colors ${
+                activeFilter === filterValue
+                  ? "bg-white text-[#3f0f4f] border-white"
+                  : "text-white border-white hover:bg-white hover:text-[#3f0f4f]"
+              }`}
+            >
+              {filterValue}
+            </button>
+          ))}
+        </div>
+
+        {/* Selector de ordenamiento */}
+        <div className="mb-4 m-3">
+          <select
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+            className="bg-white text-[#3f0f4f] text-sm px-3 py-1 rounded"
           >
-            <img src={item.image} alt={item.name} className="w-full h-auto rounded" />
-            <h3 className="text-sm mt-1 font-semibold">{item.name}</h3>
-            <p className="text-xs text-gray-600">${item.price}</p>
-          </Link>
-        ))}
+            <option value="default">Ordenar por</option>
+            <option value="price-low">Precio: menor a mayor</option>
+            <option value="price-high">Precio: mayor a menor</option>
+          </select>
+        </div>
+
+        {/* Masonry container */}
+        <div className="masonry m-3">
+          {paginated.map((product) => (
+            <div key={product.id} className="masonry-item">
+              <Link
+                to={`/product/${product.id}`}
+                className="bg-black p-2 rounded shadow text-white hover:scale-105 transition-transform flex flex-col"
+              >
+                <div className="w-full h-auto flex items-center justify-center">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-auto object-cover rounded"
+                  />
+                </div>
+                <h3 className="text-sm mt-1 font-semibold">{product.name}</h3>
+                <p className="text-xs text-gray-600">
+                  ${product.price}
+                  {product.discount && (
+                    <span className="ml-2 line-through text-red-500">
+                      ${product.discount}
+                    </span>
+                  )}
+                </p>
+                {product.rating && (
+                  <div className="flex items-center text-yellow-400 text-xs mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <span key={i}>
+                        {i < Math.floor(product.rating) ? "★" : "☆"}
+                      </span>
+                    ))}
+                    <span className="text-gray-500 ml-1">{product.rating}</span>
+                  </div>
+                )}
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        {/* Paginación */}
+        {totalPages > 1 && (
+          <div className="flex justify-center gap-2 mt-6 flex-wrap">
+            {Array.from({ length: totalPages }, (_, i) => {
+              const pageNum = i + 1;
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className={`px-3 py-1 rounded transition-colors ${
+                    currentPage === pageNum
+                      ? "bg-white text-[#3f0f4f] font-bold"
+                      : "bg-transparent border border-white text-white hover:bg-white hover:text-[#3f0f4f]"
+                  }`}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Info de paginación */}
+        {totalPages > 1 && (
+          <div className="text-center mt-4 text-sm text-gray-300">
+            Página {currentPage} de {totalPages} • Mostrando {paginated.length} de {sorted.length} productos
+          </div>
+        )}
       </div>
     </section>
   );

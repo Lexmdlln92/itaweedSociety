@@ -102,7 +102,7 @@ export default function ProductDetail() {
             <img
               src={imagesToShow[currentImageIndex]}
               alt={`${product.name} vista ${currentImageIndex + 1}`}
-              className="w-full rounded h-105"
+              className="w-full rounded h-140"
             />
           </div>
 

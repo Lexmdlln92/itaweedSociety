@@ -60,7 +60,7 @@ const CollaborationPage = () => {
       </div>
 
       {/* Beneficio + aclaración mejorado */}
-      <div className="bg-amber-50 text-black rounded-xl px-6 py-6 md:py-8 text-center max-w-3xl mx-auto shadow-lg">
+      <div className="bg-amber-50 text-black rounded-xl px-6 py-6 md:py-8 text-center max-w-3xl mx-auto shadow-lg mb-5">
         <h3 className="text-xl md:text-2xl font-semibold mb-2">
           Participa por un tatuaje exclusivo de Ana Bravo Ink
         </h3>
@@ -68,6 +68,24 @@ const CollaborationPage = () => {
           Al comprar cualquier prenda de las marcas <span className="text-amber-600 font-bold">D2D</span> o <span className="text-amber-600 font-bold">LEX</span> durante este mes.
         </p>
         <p className="text-sm text-gray-600 mt-3 italic">*Aplica condiciones y restricciones.</p>
+      </div>
+      <div className="bg-amber-50 text-black rounded-xl px-6 py-6 mb-3 md:py-8 text-center max-w-3xl mx-auto shadow-lg">
+        <h3 className="text-xl md:text-2xl font-semibold mb-2">
+          Formulario para registrar tu compra y psrticipar por el premio de la colaboracion del mes
+        </h3>
+        <p className="text-sm text-gray-600 mt-3 italic">*Aplica condiciones y restricciones.</p>
+      </div>
+      <div className="bg-amber-50 text-black rounded-xl px-6 py-6 mb-3 md:py-8 text-center max-w-3xl mx-auto shadow-lg">
+        <h3 className="text-xl md:text-2xl font-semibold mb-2">
+          video del invitado
+        </h3>
+        <p className="text-sm text-gray-600 mt-3 italic">*Aplica condiciones y restricciones.</p>
+      </div>
+      <div className="bg-amber-50 text-black rounded-xl px-6 py-6 md:py-8 text-center max-w-3xl mx-auto shadow-lg">
+        <h3 className="text-xl md:text-2xl font-semibold mb-2">
+          tienes un producto o servicio y que colaboremos? 
+        </h3>
+        <p className="text-sm text-gray-600 mt-3 italic">*consulta mas detalles.</p>
       </div>
     </section>
   );

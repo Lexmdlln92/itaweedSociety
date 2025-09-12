@@ -33,8 +33,8 @@ export default function Home() {
         speed="14s" 
         fontClass="font-rock" 
         />
-        <Undertake />
         <Collaborations/>
+        <Undertake />
         <States />
       </Suspense>
 

@@ -7,12 +7,13 @@ import state5 from "../assets/state5.png";
 import state6 from "../assets/state6.png";
 
 const states = [
-  { img: state1, name: "state1" },
-  { img: state2, name: "state2" },
+
   { img: state3, name: "state3" },
   { img: state4, name: "state4" },
   { img: state5, name: "state5" },
   { img: state6, name: "state6" },
+  { img: state1, name: "state1" },
+  { img: state2, name: "state2" },
 ];
 
 const StatesPage = () => {

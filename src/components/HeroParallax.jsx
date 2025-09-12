@@ -72,7 +72,7 @@ export default function HeroParallax() {
   const MOBILE_BREAKPOINT_PX = 768;
 
   // Nubes más grandes: 60-65% del alto del contenedor
-  const cloudHeightRatioMobile = 0.70; // 70% del alto en móvil
+  const cloudHeightRatioMobile = 0.65; // 70% del alto en móvil
   const cloudHeightRatioDesktop = 0.60; // 60% en desktop
 
   // Offset bottom (negativo para centrar mejor las nubes)
@@ -208,7 +208,7 @@ export default function HeroParallax() {
         className="absolute z-30 pointer-events-none"
         style={{
           left: '50%',
-          top: useMobileLayout ? '32%' : '40%', // ajusta aquí si quieres más arriba/abajo
+          top: useMobileLayout ? '35%' : '40%', // ajusta aquí si quieres más arriba/abajo
           transform: `translate(-50%, ${astroOuterTranslateY}px)`,
           willChange: 'transform',
           transition: 'transform 120ms linear'
@@ -236,7 +236,7 @@ export default function HeroParallax() {
             className="object-contain drop-shadow-2xl"
             style={{
               width: '800px',      // tamaño fijo
-              maxWidth: '90%',     // límite relativo al contenedor
+              maxWidth: '100%',     // límite relativo al contenedor
               pointerEvents: 'none'
             }}
             loading="eager"
