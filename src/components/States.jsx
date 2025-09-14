@@ -1,9 +1,9 @@
-import state1 from "../assets/state1.png";
-import state2 from "../assets/state2.png";
-import state3 from "../assets/state3.png";
-import state4 from "../assets/state4.png";
-import state5 from "../assets/state5.png";
-import state6 from "../assets/state6.png";
+import state1 from "../assets/states/state1.png";
+import state2 from "../assets/states/state2.png";
+import state3 from "../assets/states/state3.png";
+import state4 from "../assets/states/state4.png";
+import state5 from "../assets/states/state5.png";
+import state6 from "../assets/states/state6.png";
 import { Link } from "react-router-dom";
 
 const images = [state5, state6, state3, state4,state1, state2, ];

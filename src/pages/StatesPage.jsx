@@ -1,10 +1,10 @@
 import { FiDownload } from "react-icons/fi";
-import state1 from "../assets/state1.png";
-import state2 from "../assets/state2.png";
-import state3 from "../assets/state3.png";
-import state4 from "../assets/state4.png";
-import state5 from "../assets/state5.png";
-import state6 from "../assets/state6.png";
+import state1 from "../assets/stories/state1.png";
+import state2 from "../assets/stories/state2.png";
+import state3 from "../assets/stories/state3.png";
+import state4 from "../assets/stories/state4.png";
+import state5 from "../assets/stories/state5.png";
+import state6 from "../assets/stories/state6.png";
 
 const states = [
 

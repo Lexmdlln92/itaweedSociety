@@ -8,33 +8,33 @@ import t1 from "../assets/tshirt1.png";
 import t1_1 from "../assets/tshirt1-1.png";
 import t1_2 from "../assets/tshirt1-2.png";
 import t1_3 from "../assets/tshirt1-3.png";
-import t2 from "../assets/tshirt2.png";
-import t3 from "../assets/tshirt3.png";
-import t4 from "../assets/tshirt4.png";
-import t5 from "../assets/tshirt5.png";
-import t6 from "../assets/tshirt6.jpg";
-import t8 from "../assets/tshirt8.png";
-import t9 from "../assets/tshirt9.png";
-import t10 from "../assets/tshirt10.png";
-import t11 from "../assets/tshirt11.png";
-import t12 from "../assets/tshirt12.png";
-import buzo5 from "../assets/buzo5.png";
-import buzo from "../assets/buzo.png";
-import cap from "../assets/cap.png";
-import cap1 from "../assets/cap1.png";
-import sweatpants1 from "../assets/sweatpants1.png";
-import sweatpants2 from "../assets/sweatpants2.png";
-import sweatpantsD2D from "../assets/sweatpants1D2D.png";
-import sweatpants1D2D from "../assets/sweatpants2D2D.png";
-import tshirt1D2D from "../assets/tshirt1D2D.png";
-import tshirt2D2D from "../assets/tshirt2D2D.png";
-import tshirt3D2D from "../assets/tshirt3D2D.png";
-import tshirt4D2D from "../assets/tshirt4D2D.png";
-import tshirt5D2D from "../assets/tshirt5D2D.png";
-import hoodie1D2D from "../assets/hoodie1D2D.png";
-import hoodie2D2D from "../assets/hoodie2D2D.png";
-import cap1D2D from "../assets/cap1D2D.png";
-import cap2D2D from "../assets/capD2D.png";
+import t2 from "../assets/D2D/tshirt2.png";
+import t3 from "../assets/D2D/tshirt3.png";
+import t4 from "../assets/lex/tshirt4.png";
+import t5 from "../assets/lex/tshirt5.png";
+import t6 from "../assets/lex/tshirt6.jpg";
+import t8 from "../assets/lex/tshirt8.png";
+import t9 from "../assets/lex/tshirt9.png";
+import t10 from "../assets/lex/tshirt10.png";
+import t11 from "../assets/lex/tshirt11.png";
+import t12 from "../assets/lex/tshirt13.png";
+import buzo5 from "../assets/lex/buzo5.png";
+import buzo from "../assets/lex/buzo.png";
+import cap from "../assets/lex/cap.png";
+import cap1 from "../assets/lex/cap1.png";
+import sweatpants1 from "../assets/lex/sweatpants1.png";
+import sweatpants2 from "../assets/lex/sweatpants2.png";
+import sweatpantsD2D from "../assets/D2D/sweatpants1D2D.png";
+import sweatpants1D2D from "../assets/D2D/sweatpants2D2D.png";
+import tshirt1D2D from "../assets/D2D/tshirt1D2D.png";
+import tshirt2D2D from "../assets/D2D/tshirt2D2D.png";
+import tshirt3D2D from "../assets/D2D/tshirt3D2D.png";
+import tshirt4D2D from "../assets/D2D/tshirt4D2D.png";
+import tshirt5D2D from "../assets/D2D/tshirt5D2D.png";
+import hoodie1D2D from "../assets/D2D/hoodie1D2D.png";
+import hoodie2D2D from "../assets/D2D/hoodie2D2D.png";
+import cap1D2D from "../assets/D2D/cap1D2D.png";
+import cap2D2D from "../assets/D2D/cap2D2D.png";
 
 // ESTRUCTURA ORGANIZADA POR CATEGORÍAS
 // Cada categoría tiene sus productos con IDs únicos y consistentes
@@ -114,7 +114,7 @@ export const productCategories = {
       category: "sudaderas",
       price: "80.000 cop",
       image: sweatpants1,
-      rating: 4.0,
+      rating: 4.5,
       description: "Sudadera cómoda con diseño ártico.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Recién llegados",
@@ -161,6 +161,18 @@ export const productCategories = {
       image: t3,
       rating: 4.3,
       description: "Tipografía japonesa con diseño contemporáneo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Camisetas",
+      breadcrumbRoute: "/products/camisetas"
+    },
+        {
+      id: "4",
+      name: "Dirty Bart",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t4,
+      rating: 4.5,
+      description: "Bart Simpson con actitud grunge.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Camisetas",
       breadcrumbRoute: "/products/camisetas"
@@ -227,18 +239,6 @@ export const productCategories = {
       breadcrumbRoute: "/products/camisetas"
     },
     {
-      id: "12",
-      name: "Dirty bart oversize",
-      category: "camisetas",
-      price: "240.000 cop",
-      image: t12,
-      rating: 4.1,
-      description: "Versión oversize del clásico Dirty Bart.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Camisetas",
-      breadcrumbRoute: "/products/camisetas"
-    },
-    {
       id: "18",
       name: "Drugrats t-shirt",
       category: "camisetas",
@@ -254,18 +254,7 @@ export const productCategories = {
 
   // BUZOS
   buzos: [
-    {
-      id: "4",
-      name: "Dirty Bart",
-      category: "buzos",
-      price: "80.000 cop",
-      image: t4,
-      rating: 4.5,
-      description: "Bart Simpson con actitud grunge.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Buzos",
-      breadcrumbRoute: "/products/buzos"
-    },
+
     {
       id: "16",
       name: "Drugsrats white",
@@ -353,7 +342,7 @@ export const productCategories = {
   visionLex: [
     {
       id: "21",
-      name: "LEX Homero Premium",
+      name: "LEX Homero",
       category: "camisetas",
       price: "80.000 cop",
       image: t8,
@@ -365,7 +354,7 @@ export const productCategories = {
     },
         {
       id: "27",
-      name: "LEX Esmeralda Premium",
+      name: "LEX Esmeralda",
       category: "gorras",
       price: "60.000 cop",
       image: cap1,
@@ -377,9 +366,9 @@ export const productCategories = {
     },
         {
       id: "28",
-      name: "Sudadera Ártico Premium",
+      name: "Sudadera Artico",
       category: "sudaderas",
-      price: "90.000 cop",
+      price: "80.000 cop",
       image: sweatpants1,
       rating: 4.5,
       description: "Sudadera premium con diseño ártico y tecnología térmica.",
@@ -389,7 +378,7 @@ export const productCategories = {
     },
     {
       id: "22",
-      name: "Niño Rata Premium",
+      name: "Niño Rata",
       category: "camisetas",
       price: "240.000 cop",
       image: t9,
@@ -402,7 +391,7 @@ export const productCategories = {
     },
     {
       id: "23",
-      name: "Krusty Skull Premium",
+      name: "Krusty Skull",
       category: "camisetas",
       price: "75.000 cop",
       image: t10,
@@ -414,7 +403,7 @@ export const productCategories = {
     },
     {
       id: "24",
-      name: "Good Luck Black Premium",
+      name: "Good Luck Black",
       category: "camisetas",
       price: "80.000 cop",
       image: t11,
@@ -425,20 +414,8 @@ export const productCategories = {
       breadcrumbRoute: "/products/vision-lex"
     },
     {
-      id: "25",
-      name: "Dirty Bart Oversize Premium",
-      category: "camisetas",
-      price: "240.000 cop",
-      image: t12,
-      rating: 4.1,
-      description: "Versión oversize premium del clásico Dirty Bart con materiales de lujo.",
-      size: "Disponible en tallas de la S a la XXL",
-      breadcrumbCategory: "Visión LEX",
-      breadcrumbRoute: "/products/vision-lex"
-    },
-    {
       id: "26",
-      name: "Gorra Black LEX Premium",
+      name: "Gorra Black Lex",
       category: "gorras",
       price: "60.000 cop",
       image: cap,
@@ -451,7 +428,7 @@ export const productCategories = {
 
     {
       id: "29",
-      name: "Sudadera Ratón Premium",
+      name: "Sudadera raton",
       category: "sudaderas",
       price: "90.000 cop",
       image: sweatpants2,
@@ -463,7 +440,7 @@ export const productCategories = {
     },
     {
       id: "30",
-      name: "Drugsrats White Premium",
+      name: "Drugsrats White",
       category: "buzos",
       price: "150.000 cop",
       image: buzo5,
@@ -475,12 +452,24 @@ export const productCategories = {
     },
     {
       id: "31",
-      name: "Siempre Alegre Black Premium",
+      name: "Siempre Alegre Black",
       category: "buzos",
       price: "150.000 cop",
       image: buzo,
       rating: 4.4,
       description: "Buzo premium con mensaje positivo y materiales de lujo.",
+      size: "Disponible en tallas de la S a la XXL",
+      breadcrumbCategory: "Visión LEX",
+      breadcrumbRoute: "/products/vision-lex"
+    },
+    {
+      id: "32",
+      name: "De Rose Black",
+      category: "camisetas",
+      price: "80.000 cop",
+      image: t12,
+      rating: 4.4,
+      description: "Camiseta premium con el juego de palabras ROSE dar una vuelta en Colombia y ROSE en inglés rosa, 100% algodón peruano.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Visión LEX",
       breadcrumbRoute: "/products/vision-lex"
@@ -501,7 +490,7 @@ export const productCategories = {
     },
     {
       id: "41",
-      name: "gorrita D2D",
+      name: "roja ferrari D2D",
       category: "gorras",
       price: "70.000 cop",
       image: cap1D2D,
@@ -513,7 +502,7 @@ export const productCategories = {
     },
         {
       id: "32",
-      name: "sudadera gris D2D",
+      name: "nave de Los Grises D2D",
       category: "sudaderas",
       price: "100.000 cop",
       image: sweatpantsD2D,
@@ -525,7 +514,7 @@ export const productCategories = {
     },
         {
       id: "34",
-      name: "camiseta Oversize luna",
+      name: " Lunastro D2D",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt1D2D,
@@ -537,7 +526,7 @@ export const productCategories = {
     },
     {
       id: "40",
-      name: "familia Dog",
+      name: "Familia Dog",
       category: "buzos",
       price: "160.000 cop",
       image: hoodie2D2D,
@@ -552,7 +541,7 @@ export const productCategories = {
         
     {
       id: "42",
-      name: "gorrita cielo D2D",
+      name: "Cielo D2D",
       category: "gorras",
       price: "80.000 cop",
       image: cap2D2D,
@@ -564,7 +553,7 @@ export const productCategories = {
     },
     {
       id: "35",
-      name: "oversize Dragon D2D",
+      name: "Dragon D2D",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt2D2D,
@@ -576,7 +565,7 @@ export const productCategories = {
     },
     {
       id: "33",
-      name: "sudadera naranja D2D",
+      name: " Naranja D2D",
       category: "sudaderas",
       price: "120.000 cop",
       image: sweatpants1D2D,
@@ -588,7 +577,7 @@ export const productCategories = {
     },
     {
       id: "36",
-      name: "oversize amanecer D2D",
+      name: " Amanecer D2D",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt3D2D,
@@ -602,7 +591,7 @@ export const productCategories = {
 
     {
       id: "37",
-      name: "oversize amanecer D2D",
+      name: "Monkey D2D ",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt4D2D,
@@ -615,7 +604,7 @@ export const productCategories = {
         
     {
       id: "38",
-      name: "alien D2D",
+      name: "Alien D2D",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt5D2D,

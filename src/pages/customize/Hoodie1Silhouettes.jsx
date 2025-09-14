@@ -1,14 +1,14 @@
 // src/pages/customize/HoodieSilhouettes.jsx
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import hoodie1 from "../../assets/hoodie1.webp";
-import hoodie2 from "../../assets/hoodie2.webp";
-import hoodie3 from "../../assets/hoodie3.webp";
-import hoodie4 from "../../assets/hoodie4.webp";
-import silueta1Modal from "../../assets/silueta1Modal.png";
-import silueta2Modal from "../../assets/silueta2Modal.png";
-import silueta3Modal from "../../assets/silueta3Modal.png";
-import silueta4Modal from "../../assets/silueta4Modal.png";
+import hoodie1 from "../../assets/customization/customization/hoodie1.webp";
+import hoodie2 from "../../assets/customization/customization/hoodie2.webp";
+import hoodie3 from "../../assets/customization/customization/hoodie3.webp";
+import hoodie4 from "../../assets/customization/customization/hoodie4.webp";
+import silueta1Modal from "../../assets/customization/customization/silueta1Modal.png";
+import silueta2Modal from "../../assets/customization/customization/silueta2Modal.png";
+import silueta3Modal from "../../assets/customization/customization/silueta3Modal.png";
+import silueta4Modal from "../../assets/customization/customization/silueta4Modal.png";
 
 const silhouettes = [
   { id: "buzo1", label: "Manga Ranglan, Corte en manga", image: hoodie1, modalImage: silueta1Modal },
