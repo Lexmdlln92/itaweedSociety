@@ -501,25 +501,25 @@ export const productCategories = {
       breadcrumbRoute: "/products/universo-d2d"
     },
         {
-      id: "32",
+      id: "44",
       name: "nave de Los Grises D2D",
       category: "sudaderas",
       price: "100.000 cop",
       image: sweatpantsD2D,
       rating: 4.7,
-      description: "Edición premium sudadera  - diseño exclusivo.",
+      description: "Edición premium camiseta  - diseño exclusivo.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Universo D2D",
       breadcrumbRoute: "/products/universo-d2d"
     },
-        {
+    {
       id: "34",
       name: " Lunastro D2D",
       category: "camisetas",
       price: "80.000 cop",
       image: tshirt1D2D,
       rating: 4.7,
-      description: "Edición premium sudadera  - diseño exclusivo.",
+      description: "Edición premium camiseta  - diseño exclusivo.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Universo D2D",
       breadcrumbRoute: "/products/universo-d2d"
@@ -558,7 +558,7 @@ export const productCategories = {
       price: "80.000 cop",
       image: tshirt2D2D,
       rating: 4.7,
-      description: "Edición premium sudadera  - diseño exclusivo.",
+      description: "Edición premium camiseta  - diseño exclusivo.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Universo D2D",
       breadcrumbRoute: "/products/universo-d2d"
@@ -582,7 +582,7 @@ export const productCategories = {
       price: "80.000 cop",
       image: tshirt3D2D,
       rating: 4.7,
-      description: "Edición premium sudadera  - diseño exclusivo.",
+      description: "Edición premium camiseta  - diseño exclusivo.",
       size: "Disponible en tallas de la S a la XXL",
       breadcrumbCategory: "Universo D2D",
       breadcrumbRoute: "/products/universo-d2d"
