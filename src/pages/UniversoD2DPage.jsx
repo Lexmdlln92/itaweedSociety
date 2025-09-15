@@ -71,14 +71,10 @@ export default function VisionLEXPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Scroll al top al montar
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
-    <section className="text-white bg-gradient-to-br from-[#0f4f1a] to-[#1bb754] min-h-screen pb-6">
-      //{/* HERO PARALLAX - Solo se muestra cuando activeFilter es "todos" */}
+    <section className="text-white bg-gradient-to-br from-[#0f4f1a] to-[#1bb754] min-h-screen pb-6 pt-4">
+      {/* HERO PARALLAX - Solo se muestra cuando activeFilter es "todos" */}
 
       <div className={activeFilter === "todos" ? "" : "pt-8"}>
         <h1 className="text-center text-3xl font-bold mb-2 mt-6 uppercase">

@@ -72,7 +72,10 @@ export default function VisionLEXPage() {
     // Scroll handled by centralized ScrollToTop component
   };
 
+  // ESTRUCTURA JSX CORRECTA: Todo debe estar dentro de un elemento contenedor único
   return (
+    <section className="text-white bg-gradient-to-br from-[#3f0f4f] to-[#7d1c82] min-h-screen pb-6">
+      {/* HERO PARALLAX - Solo se muestra cuando activeFilter es "todos" */}
       {activeFilter === "todos" && <HeroParallax />}
 
       <div className={activeFilter === "todos" ? "" : "pt-8"}>
