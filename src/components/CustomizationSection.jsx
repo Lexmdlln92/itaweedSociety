@@ -6,6 +6,8 @@ import pantalonetas from "../assets/customization/shortD2D.png";
 import { useNavigate } from "react-router-dom";
 
 
+
+
 const styles = [
   {
     label: "Camisetas",
