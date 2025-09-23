@@ -6,6 +6,7 @@ import state4 from "../assets/states/state4.webp";
 import state5 from "../assets/states/state5.webp";
 import state6 from "../assets/states/state6.webp";
 
+
 const states = [
 
   { img: state3, name: "state3" },
