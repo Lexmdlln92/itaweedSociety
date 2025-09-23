@@ -4,18 +4,18 @@ import MarqueeText from "../components/MarqueeText";
 
 
 // LEX Brand Assets
-import lexLogo from "../assets/brandSectionLex/logo LEX.png";
-import lexCover1 from "../assets/brandSectionLex/lexcover1.png";
-import lexCover2 from "../assets/brandSectionLex/lexcover2.png";
-import lexCover3 from "../assets/brandSectionLex/lexcover3.png";
+import lexLogo from "../assets/brandSectionLex/logoLEX.webp";
+import lexCover1 from "../assets/brandSectionLex/lexcover1.webp";
+import lexCover2 from "../assets/brandSectionLex/lexcover2.webp"; 
+import lexCover3 from "../assets/brandSectionLex/lexcover3.webp";
 
 // D2D Brand Assets
-import coverD2D1 from "../assets/brandSectionD2D/coverD2D1.png";
-import coverD2Dlogo from "../assets/brandSectionD2D/coverD2Dlogo.png";
-import coverD2D2 from "../assets/brandSectionD2D/coverD2D2.png";
-import coverD2D3 from "../assets/brandSectionD2D/coverD2D3.png";
-import coverD2D4 from "../assets/brandSectionD2D/coverD2D4.png";
-import spaceBg from "../assets/brandSectionD2D/space.png";
+import coverD2D1 from "../assets/brandSectionD2D/coverD2D1.webp";
+import coverD2Dlogo from "../assets/brandSectionD2D/coverD2Dlogo.webp";
+import coverD2D2 from "../assets/brandSectionD2D/coverD2D2.webp";
+import coverD2D3 from "../assets/brandSectionD2D/coverD2D3.webp";
+import coverD2D4 from "../assets/brandSectionD2D/coverD2D4.webp";
+import spaceBg from "../assets/brandSectionD2D/space.webp";
 
 const cover = [
   {

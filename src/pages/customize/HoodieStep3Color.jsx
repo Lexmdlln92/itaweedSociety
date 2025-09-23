@@ -2,16 +2,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import mangasDerecha from "/src/assets/hoodieParts/mangas-derecha.png";
-import mangasIzquierda from "/src/assets/hoodieParts/mangas-izquierda.png";
-import frente from "/src/assets/hoodieParts/frente.png";
-//import espalda from "/src/assets/hoodieParts/espalda.png";
-import ribsDerecho from "/src/assets/hoodieParts/rib-derecho.png";
-import ribsIzquierdo from "/src/assets/hoodieParts/rib-izquierdo.png";
-import fajon from "/src/assets/hoodieParts/fajon.png";
-import capuchaExterna from "/src/assets/hoodieParts/capucha-externa.png";
-import capuchaInterna from "/src/assets/hoodieParts/capucha-interna.png";
-import cordon from "/src/assets/hoodieParts/cordon.png";
+import mangasDerecha from "/src/assets/hoodieParts/mangas-derecha.webp";
+import mangasIzquierda from "/src/assets/hoodieParts/mangas-izquierda.webp";
+import frente from "/src/assets/hoodieParts/frente.webp";
+//import espalda from "/src/assets/hoodieParts/espalda.webp";
+import ribsDerecho from "/src/assets/hoodieParts/rib-derecho.webp";
+import ribsIzquierdo from "/src/assets/hoodieParts/rib-izquierdo.webp";
+import fajon from "/src/assets/hoodieParts/fajon.webp";
+import capuchaExterna from "/src/assets/hoodieParts/capucha-externa.webp";
+import capuchaInterna from "/src/assets/hoodieParts/capucha-interna.webp";
+import cordon from "/src/assets/hoodieParts/cordon.webp";
 
 const hoodieParts = [
   { name: "Manga derecha", image: mangasDerecha },

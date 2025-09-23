@@ -81,7 +81,7 @@ export default function VisionLEXPage() {
           UNIVERSO D2D
         </h1>
         <p className="text-center text-sm text-gray-300 mb-4">
-          Descubre la colección urbana que define tu estilo auténtico.
+          Descubre la colección urbana que define tu estilo.
         </p>
 
         {/* Filtros */}

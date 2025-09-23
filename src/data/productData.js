@@ -4,37 +4,37 @@
 // y es la única fuente de verdad para toda la aplicación
 
 // Importar todas las imágenes necesarias
-import t1 from "../assets/tshirt1.png";
-import t1_1 from "../assets/tshirt1-1.png";
-import t1_2 from "../assets/tshirt1-2.png";
-import t1_3 from "../assets/tshirt1-3.png";
-import t2 from "../assets/D2D/tshirt2.png";
-import t3 from "../assets/D2D/tshirt3.png";
-import t4 from "../assets/lex/tshirt4.png";
-import t5 from "../assets/lex/tshirt5.png";
+import t1 from "../assets/productDetails/tshirt1.webp";
+import t1_1 from "../assets/productDetails/tshirt1-1.webp";
+import t1_2 from "../assets/productDetails/tshirt1-2.webp";
+import t1_3 from "../assets/productDetails/tshirt1-3.webp";
+import t2 from "../assets/D2D/tshirt2.webp";
+import t3 from "../assets/D2D/tshirt3.webp";
+import t4 from "../assets/lex/tshirt4.webp";
+import t5 from "../assets/lex/tshirt5.webp";
 import t6 from "../assets/lex/tshirt6.jpg";
-import t8 from "../assets/lex/tshirt8.png";
-import t9 from "../assets/lex/tshirt9.png";
-import t10 from "../assets/lex/tshirt10.png";
-import t11 from "../assets/lex/tshirt11.png";
-import t12 from "../assets/lex/tshirt13.png";
-import buzo5 from "../assets/lex/buzo5.png";
-import buzo from "../assets/lex/buzo.png";
-import cap from "../assets/lex/cap.png";
-import cap1 from "../assets/lex/cap1.png";
-import sweatpants1 from "../assets/lex/sweatpants1.png";
-import sweatpants2 from "../assets/lex/sweatpants2.png";
-import sweatpantsD2D from "../assets/D2D/sweatpants1D2D.png";
-import sweatpants1D2D from "../assets/D2D/sweatpants2D2D.png";
-import tshirt1D2D from "../assets/D2D/tshirt1D2D.png";
-import tshirt2D2D from "../assets/D2D/tshirt2D2D.png";
-import tshirt3D2D from "../assets/D2D/tshirt3D2D.png";
-import tshirt4D2D from "../assets/D2D/tshirt4D2D.png";
-import tshirt5D2D from "../assets/D2D/tshirt5D2D.png";
-import hoodie1D2D from "../assets/D2D/hoodie1D2D.png";
-import hoodie2D2D from "../assets/D2D/hoodie2D2D.png";
-import cap1D2D from "../assets/D2D/cap1D2D.png";
-import cap2D2D from "../assets/D2D/cap2D2D.png";
+import t8 from "../assets/lex/tshirt8.webp";
+import t9 from "../assets/lex/tshirt9.webp";
+import t10 from "../assets/lex/tshirt10.webp";
+import t11 from "../assets/lex/tshirt11.webp";
+import t12 from "../assets/lex/tshirt13.webp";
+import buzo5 from "../assets/lex/buzo5.webp";
+import buzo from "../assets/lex/buzo.webp";
+import cap from "../assets/lex/cap.webp";
+import cap1 from "../assets/lex/cap1.webp";
+import sweatpants1 from "../assets/lex/sweatpants1.webp";
+import sweatpants2 from "../assets/lex/sweatpants2.webp";
+import sweatpantsD2D from "../assets/D2D/sweatpants1D2D.webp";
+import sweatpants1D2D from "../assets/D2D/sweatpants2D2D.webp";
+import tshirt1D2D from "../assets/D2D/tshirt1D2D.webp";
+import tshirt2D2D from "../assets/D2D/tshirt2D2D.webp";
+import tshirt3D2D from "../assets/D2D/tshirt3D2D.webp";
+import tshirt4D2D from "../assets/D2D/tshirt4D2D.webp";
+import tshirt5D2D from "../assets/D2D/tshirt5D2D.webp";
+import hoodie1D2D from "../assets/D2D/hoodie1D2D.webp";
+import hoodie2D2D from "../assets/D2D/hoodie2D2D.webp";
+import cap1D2D from "../assets/D2D/cap1D2D.webp";
+import cap2D2D from "../assets/D2D/cap2D2D.webp";
 
 // ESTRUCTURA ORGANIZADA POR CATEGORÍAS
 // Cada categoría tiene sus productos con IDs únicos y consistentes
@@ -97,7 +97,7 @@ export const productCategories = {
       breadcrumbRoute: "/products/new"
     },
     {
-      id: "17",
+      id: "13",
       name: "Lex Esmeralda",
       category: "gorras",
       price: "150.000 cop",

@@ -5,10 +5,10 @@ import hoodie1 from "../../assets/customization/hoodie1.webp";
 import hoodie2 from "../../assets/customization/hoodie2.webp";
 import hoodie3 from "../../assets/customization/hoodie3.webp";
 import hoodie4 from "../../assets/customization/hoodie4.webp";
-import silueta1Modal from "../../assets/customization/silueta1Modal.png";
-import silueta2Modal from "../../assets/customization/silueta2Modal.png";
-import silueta3Modal from "../../assets/customization/silueta3Modal.png";
-import silueta4Modal from "../../assets/customization/silueta4Modal.png";
+import silueta1Modal from "../../assets/customization/silueta1Modal.webp";
+import silueta2Modal from "../../assets/customization/silueta2Modal.webp";
+import silueta3Modal from "../../assets/customization/silueta3Modal.webp";
+import silueta4Modal from "../../assets/customization/silueta4Modal.webp";
 
 const silhouettes = [
   { id: "buzo1", label: "Manga Ranglan, Corte en manga", image: hoodie1, modalImage: silueta1Modal },

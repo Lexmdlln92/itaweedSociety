@@ -1,7 +1,7 @@
 // src/components/HeroSection.jsx
 // eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform } from 'framer-motion';
-import hero from '../assets/d2d-lex.png';
+import hero from '../assets/hero/d2d-lex.webp';
 
 export default function HeroSection() {
   // Hook para obtener el progreso del scroll

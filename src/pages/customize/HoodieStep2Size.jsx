@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import hoodie1 from "../../assets/hoodie1.webp";
-import hoodie2 from "../../assets/hoodie2.webp";
-import hoodie3 from "../../assets/hoodie3.webp";
-import hoodie4 from "../../assets/hoodie4.webp";
+import hoodie1 from "../../assets/customization/hoodie1.webp";
+import hoodie2 from "../../assets/customization/hoodie2.webp";
+import hoodie3 from "../../assets/customization/hoodie3.webp";
+import hoodie4 from "../../assets/customization/hoodie4.webp";
 import { useState } from "react";
 
 const hoodieMap = {

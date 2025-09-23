@@ -1,8 +1,8 @@
 // src/components/CustomizationSection.jsx
-import camisetas from "../assets/customization/tshirtD2D.png";
-import buzos from "../assets/customization/hoodieD2D.png";
-import sudaderas from "../assets/customization/sweatpantsD2D.png";
-import pantalonetas from "../assets/customization/shortD2D.png";
+import camisetas from "../assets/customization/tshirtD2D.webp";
+import buzos from "../assets/customization/hoodieD2D.webp";
+import sudaderas from "../assets/customization/sweatpantsD2D.webp";
+import pantalonetas from "../assets/customization/shortD2D.webp";
 import { useNavigate } from "react-router-dom";
 
 

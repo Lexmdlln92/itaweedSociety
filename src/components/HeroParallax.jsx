@@ -4,13 +4,13 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 // Importar imágenes
-import cieloImage from '../assets/parallex/cielo.png';
-import cloud1Image from '../assets/parallex/cloud 1.png';
-import cloud2Image from '../assets/parallex/cloud 2.png';
-import cloud3Image from '../assets/parallex/cloud 3.png';
-import cloud4Image from '../assets/parallex/cloud 4.png';
-import cloud5Image from '../assets/parallex/cloud 5.png';
-import astroImage from '../assets/parallex/new astro (1).png';
+import cieloImage from '../assets/parallex/cielo.webp';
+import cloud1Image from '../assets/parallex/cloud 1.webp';
+import cloud2Image from '../assets/parallex/cloud 2.webp';
+import cloud3Image from '../assets/parallex/cloud 3.webp';
+import cloud4Image from '../assets/parallex/cloud 4.webp';
+import cloud5Image from '../assets/parallex/cloud 5.webp';
+import astroImage from '../assets/parallex/new astro (1).webp';
 
 /*
   HeroParallax Combinado:

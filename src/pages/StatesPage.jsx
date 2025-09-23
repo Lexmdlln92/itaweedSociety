@@ -1,10 +1,10 @@
 import { FiDownload } from "react-icons/fi";
-import state1 from "../assets/states/state1.png";
-import state2 from "../assets/states/state2.png";
-import state3 from "../assets/states/state3.png";
-import state4 from "../assets/states/state4.png";
-import state5 from "../assets/states/state5.png";
-import state6 from "../assets/states/state6.png";
+import state1 from "../assets/states/state1.webp";
+import state2 from "../assets/states/state2.webp";
+import state3 from "../assets/states/state3.webp";
+import state4 from "../assets/states/state4.webp";
+import state5 from "../assets/states/state5.webp";
+import state6 from "../assets/states/state6.webp";
 
 const states = [
 
@@ -20,7 +20,7 @@ const StatesPage = () => {
   return (
     <section className="min-h-screen py-16 px-6 md:px-20 bg-black text-white">
       <h1 className="text-4xl font-bold text-center mb-12 text-amber-400">
-        Estados del Mes
+        Estados del Mes (9)
       </h1>
 
       <div className="grid grid-cols-2 sm:grid-cols-2 gap-8">

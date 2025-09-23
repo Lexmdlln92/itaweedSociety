@@ -1,7 +1,7 @@
 // src/components/Footer.jsx
 import { useState } from "react";
 import { FaWhatsapp, FaInstagram, FaFacebook, FaTiktok, FaSpotify } from "react-icons/fa";
-import logo from "../assets/d2d-universo-logo.png"; // Asegúrate que este sea el logo correcto
+import logo from "../assets/footer/d2d-universo-logo.webp"; // Asegúrate que este sea el logo correcto
 
 const menus = [
   {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import storie1 from "../assets/storie1.png";
-import storie2 from "../assets/storie2.png"; // asegúrate de que el nombre y ruta coincidan
+import storie1 from "../assets/stories/storie1.webp";
+import storie2 from "../assets/stories/storie2.webp"; // asegúrate de que el nombre y ruta coincidan
 
 const stories = [
   {

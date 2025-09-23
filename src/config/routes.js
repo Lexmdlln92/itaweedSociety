@@ -24,6 +24,10 @@ const StatesPage = lazy(() => import("../pages/StatesPage"));
 const Hoodie1Silhouettes = lazy(() => import("../pages/customize/Hoodie1Silhouettes"));
 const HoodieStep2Size = lazy(() => import("../pages/customize/HoodieStep2Size"));
 const HoodieStep3Color = lazy(() => import("../pages/customize/HoodieStep3Color"));
+const TshirtStep1Silhouettes = lazy(() => import("../pages/customize/TshirtStep1Silhouettes"));
+const TshirtStep2Size = lazy(() => import("../pages/customize/TshirtStep2Size"));
+const TshirtStep3Color = lazy(() => import("../pages/customize/TshirtStep3Color"));
+const Sweatpants1Silhouettes = lazy(() => import("../pages/customize/Sweatpants1Silhouettes"));
 
 // Páginas de sidebar
 const Men = lazy(() => import("../pages/sidebar/MenPage"));
@@ -95,6 +99,30 @@ export const routes = [
     path: "/customize/buzos/step3",
     component: HoodieStep3Color,
     name: "hoodie-color",
+    category: "customize"
+  },
+  {
+    path: "/customize/camisetas",
+    component: TshirtStep1Silhouettes,
+    name: "Tshirt-Silhouettes",
+    category: "customize"
+  },
+  {
+    path: "/customize/camisetas/step2",
+    component: TshirtStep2Size,
+    name: "Tshirt-size",
+    category: "customize"
+  },
+  {
+    path: "/customize/camisetas/step3",
+    component: TshirtStep3Color,
+    name: "Tshirt-color",
+    category: "customize"
+  },
+  {
+    path: "/customize/sudaderas",
+    component: Sweatpants1Silhouettes,
+    name: "Sweatpants-silhouette",
     category: "customize"
   },
 

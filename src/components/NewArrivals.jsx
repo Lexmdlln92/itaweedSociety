@@ -2,12 +2,12 @@
 import { Link } from "react-router-dom";
 
 // Importar las imágenes necesarias
-import t1 from "../assets/tshirt1.png";
-import t3 from "../assets/D2D/tshirt3.png";
-import t5 from "../assets/lex/tshirt5.png";
-import sp1 from "../assets/lex/sweatpants1.png";
-import cap1 from "../assets/lex/cap1.png";
-import buzo5 from "../assets/lex/buzo5.png";
+import t1 from "../assets/tshirt1.webp";
+import t3 from "../assets/D2D/tshirt3.webp";
+import t5 from "../assets/lex/tshirt5.webp";
+import sp1 from "../assets/lex/sweatpants1.webp";
+import cap1 from "../assets/lex/cap1.webp";
+import buzo5 from "../assets/lex/buzo5.webp";
 
 // UNIFIED PRODUCT DATA - Esta debe coincidir exactamente con ProductDetail.jsx y ProductsPage.jsx
 const products = [
