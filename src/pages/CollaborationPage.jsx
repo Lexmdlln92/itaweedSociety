@@ -1,4 +1,4 @@
-import anaBravoImg from "../assets/collaborations/anaBravo.webp";
+import anaBravoImg from "../assets/collaborations/anabravo.webp";
 import { FaInstagram, FaFacebook, FaGlobe } from "react-icons/fa";
 
 const CollaborationPage = () => {
