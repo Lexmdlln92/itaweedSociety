@@ -289,7 +289,7 @@ export default function NewArrivalsPage() {
       )}
 
       {/* Información adicional para debugging (solo en desarrollo) */}
-      {process.env.NODE_ENV === 'development' && (
+      {import.meta.env.DEV && (
         <div className="mt-8 p-4 bg-gray-800 rounded text-xs">
           <h4 className="font-bold mb-2">Debug info:</h4>
           <div className="grid grid-cols-2 gap-2">

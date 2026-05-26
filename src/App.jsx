@@ -6,15 +6,17 @@ import ScrollToTop from "./components/ScrollToTop";
 import { routes } from "./config/routes";
 import Home from "./pages/Home";
 import { CartProvider } from "./context/CartContext"; // Agregar esta línea
+import useScrollGlitch from "./hooks/useScrollGlitch"; // antigravity
 
 function App() {
+  useScrollGlitch(); // Activar el efecto de glitch sutil en scroll vertical (antigravity)
+
   return (
     <CartProvider> {/* Agregar este wrapper */}
       <>
         <ScrollToTop 
           behavior="smooth" 
           delay={100}
-          excludePaths={['/']}
         />
         
         <Navbar />

@@ -8,11 +8,17 @@ export default function MarqueeText({
   const animationClass = reverse ? 'marquee-reverse' : 'marquee';
 
   return (
-    <div className="marquee-container bg-transparent text-white py-4">
+    <div className="marquee-container bg-transparent text-white py-4 w-screen overflow-hidden">
       <div
-        className={`marquee-track block mb-1 text-4xl font-extrabold ${fontClass} ${animationClass}`}
+        className={`marquee-track block mb-1 text-4xl font-extrabold ${fontClass} ${animationClass} whitespace-nowrap`}
         style={{ animationDuration: speed }}
       >
+        <span className="mr-2">{text}</span>
+        <span className="mr-2">{text}</span>
+        <span className="mr-2">{text}</span>
+        <span className="mr-2">{text}</span>
+        <span className="mr-2">{text}</span>
+        <span className="mr-2">{text}</span>
         <span className="mr-2">{text}</span>
         <span className="mr-2">{text}</span>
       </div>

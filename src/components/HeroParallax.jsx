@@ -1,8 +1,6 @@
 // src/components/HeroParallax.jsx
 import { useState, useEffect, useRef } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
 // Importar imágenes
 import cieloImage from '../assets/parallex/cielo.webp';
 import cloud1Image from '../assets/parallex/cloud 1.webp';
@@ -382,3 +380,4 @@ export default function HeroParallax() {
     </section>
   );
 }
+

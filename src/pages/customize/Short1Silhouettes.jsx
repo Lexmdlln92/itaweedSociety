@@ -1,22 +1,22 @@
-// src/pages/customize/Sweatpants1Silhouettes.jsx
+// src/pages/customize/Short1Silhouettes.jsx
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
-import sweatpants1 from "../../assets/customization/sweatpants1custom.png";
-import sweatpants2 from "../../assets/customization/sweatpants2custom.png";
-import sweatpants3 from "../../assets/customization/sweatpants3custom.png";
-import sweatpants1modal from "../../assets/customization/sweatpants1modals.png";
-import sweatpants2modal from "../../assets/customization/sweatpants2modals.png";
-import sweatpants3modal from "../../assets/customization/sweatpants3modals.png";
+import short1 from "../../assets/customization/short1custom.png";
+import short2 from "../../assets/customization/short2custom.png";
+import short3 from "../../assets/customization/short3custom.png";
+import short1modal from "../../assets/customization/short1modal.png";
+import short2modal from "../../assets/customization/short2modal.png";
+import short3modal from "../../assets/customization/short3modal.png";
 
 // CAMBIO IMPORTANTE: Cambié los IDs para que coincidan con el mapeo del paso 2
 const silhouettes = [
-  { id: "sweatpants1", label: "Sudadera 4 faces", image: sweatpants1, modalImage: sweatpants1modal },
-  { id: "sweatpants2", label: "sudadera regular bolsillo", image: sweatpants2, modalImage: sweatpants2modal },
-  { id: "sweatpants3", label: "sudadera con franjas laterales", image: sweatpants3, modalImage: sweatpants3modal },
+  { id: "short1", label: "pantaloneta 4 tapes", image: short1, modalImage: short1modal },
+  { id: "short2", label: "pantaloneta franjas", image: short2, modalImage: short2modal },
+  { id: "short3", label: "pantaloneta deportiva poliester", image: short3, modalImage: short3modal },
   // Puedes agregar más siluetas aquí si es necesario
 ];
 
-export default function Sweatpants1Silhouettes() {
+export default function Short1Silhouettes() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +45,7 @@ export default function Sweatpants1Silhouettes() {
     }
     setErrorMessage("");
     // Navegar al paso 2 enviando selectedTshirt (consistente con lo que espera el paso 2)
-    navigate("/customize/sudaderas/step2", { 
+    navigate("/customize/pantalonetas/step2", { 
       state: { selectedTshirt: selected } 
     });
   };

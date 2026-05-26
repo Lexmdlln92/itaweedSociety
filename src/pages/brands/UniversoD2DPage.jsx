@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { 
   getUniversoD2DProducts, 
   convertPriceToNumber 
-} from "../data/productData";
+} from "../../data/productData";
 
 // Importar el hero parallax
 

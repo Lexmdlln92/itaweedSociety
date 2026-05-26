@@ -234,7 +234,7 @@ export default function ProductDetail() {
       </div>
 
       {/* Debug info */}
-      {process.env.NODE_ENV === 'development' && (
+      {import.meta.env.DEV && (
         <div className="mt-8 p-4 bg-gray-800 rounded text-xs">
           <p>Debug info:</p>
           <p>Product ID: {id}</p>

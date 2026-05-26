@@ -1,4 +1,4 @@
-/* ========================================
+﻿/* ========================================
    🎨 ITAWEED SOCIETY - ESTILOS PRINCIPALES
    ======================================== */
 
@@ -135,6 +135,108 @@ body {
   animation: shake 0.4s ease-in-out;
 }
 
+.scroll-glitch-image {
+  --glitch-opacity: 0.55;
+  --glitch-shift: 10px;
+  position: relative;
+  isolation: isolate;
+  will-change: transform, filter;
+  animation: scroll-glitch-jitter 0.85s steps(2, end) infinite;
+}
+
+.scroll-glitch-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+.scroll-glitch-layer-cyan {
+  filter: drop-shadow(-8px 0 #00f7ff) saturate(1.8);
+  animation: scroll-glitch-cyan 0.85s steps(2, end) infinite;
+}
+
+.scroll-glitch-layer-red {
+  filter: drop-shadow(8px 0 #ff174d) saturate(1.8);
+  animation: scroll-glitch-red 0.85s steps(2, end) infinite;
+}
+
+.scroll-glitch-image-delay,
+.scroll-glitch-image-delay .scroll-glitch-layer {
+  animation-delay: 0.16s;
+}
+
+.scroll-glitch-image-slow,
+.scroll-glitch-image-slow .scroll-glitch-layer {
+  animation-duration: 1.1s;
+}
+
+@keyframes scroll-glitch-jitter {
+  0%, 72%, 100% {
+    filter: none;
+  }
+  74% {
+    filter: contrast(1.25) saturate(1.45);
+  }
+  76% {
+    filter: hue-rotate(18deg) contrast(1.35);
+  }
+  78% {
+    filter: none;
+  }
+}
+
+@keyframes scroll-glitch-cyan {
+  0%, 68%, 100% {
+    opacity: 0;
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  70% {
+    opacity: var(--glitch-opacity);
+    transform: translate(calc(var(--glitch-shift) * -1), -3px);
+    clip-path: inset(10% 0 72% 0);
+  }
+  74% {
+    opacity: calc(var(--glitch-opacity) * 0.75);
+    transform: translate(calc(var(--glitch-shift) * 0.85), 4px);
+    clip-path: inset(46% 0 35% 0);
+  }
+  78% {
+    opacity: var(--glitch-opacity);
+    transform: translate(calc(var(--glitch-shift) * -0.65), 2px);
+    clip-path: inset(76% 0 8% 0);
+  }
+}
+
+@keyframes scroll-glitch-red {
+  0%, 66%, 100% {
+    opacity: 0;
+    transform: translate(0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+  69% {
+    opacity: calc(var(--glitch-opacity) * 0.85);
+    transform: translate(calc(var(--glitch-shift) * 0.95), 3px);
+    clip-path: inset(28% 0 58% 0);
+  }
+  73% {
+    opacity: var(--glitch-opacity);
+    transform: translate(calc(var(--glitch-shift) * -0.8), -2px);
+    clip-path: inset(63% 0 22% 0);
+  }
+  77% {
+    opacity: calc(var(--glitch-opacity) * 0.7);
+    transform: translate(calc(var(--glitch-shift) * 0.65), 5px);
+    clip-path: inset(4% 0 82% 0);
+  }
+}
+
 /* ========================================
    🛠️ 6. UTILIDADES PERSONALIZADAS
    ======================================== */
@@ -258,3 +360,316 @@ body {
    9. Media queries responsive
    
    ======================================== */
+
+/* ========================================
+   🌐 EFECTO RETRO VHS GLITCH EN SCROLL (NOTORIO Y ANÁLOGO CON RGB) (antigravity)
+   ======================================== */
+
+/* Jitter de fotograma, desfase horizontal moderado y desgarro por franjas (clip-path) estilo VHS (antigravity) */
+@keyframes scroll-vhs-jitter {
+  0%, 100% {
+    transform: translate(0, 0) skewX(0deg);
+    filter: none;
+    clip-path: inset(0 0 0 0);
+  }
+  15% {
+    transform: translate(calc(var(--scroll-glitch-shift, 0px) * -0.3), 1px) skewX(calc(var(--scroll-glitch-skew, 0deg) * -0.6));
+    filter: contrast(1.08) brightness(1.02);
+    /* Franja superior recortada y desplazada (antigravity) */
+    clip-path: inset(8% 0 76% 0);
+  }
+  30% {
+    transform: translate(calc(var(--scroll-glitch-shift, 0px) * 0.25), -1px) skewX(calc(var(--scroll-glitch-skew, 0deg) * 0.5));
+    filter: none;
+    /* Franja inferior recortada y desplazada (antigravity) */
+    clip-path: inset(78% 0 2% 0);
+  }
+  45% {
+    transform: translate(0, 0) skewX(0deg);
+    clip-path: inset(0 0 0 0);
+  }
+  60% {
+    transform: translate(calc(var(--scroll-glitch-shift, 0px) * -0.2), 1.5px) skewX(calc(var(--scroll-glitch-skew, 0deg) * 0.4));
+    filter: contrast(1.05);
+    /* Franja intermedia recortada y desplazada (antigravity) */
+    clip-path: inset(38% 0 45% 0);
+  }
+  75% {
+    transform: translate(0, 0) skewX(0deg);
+    clip-path: inset(0 0 0 0);
+  }
+  85% {
+    transform: translate(calc(var(--scroll-glitch-shift, 0px) * 0.35), -1px) skewX(calc(var(--scroll-glitch-skew, 0deg) * -0.5));
+    clip-path: inset(18% 0 62% 0);
+  }
+}
+
+/* Animación de desplazamiento vertical para la barra de ruido de tracking VHS (antigravity) */
+@keyframes vhs-tracking-bar {
+  0% {
+    top: -20%;
+  }
+  100% {
+    top: 120%;
+  }
+}
+
+/* Aplicación del efecto de temblor al contenido principal de la web (antigravity) */
+body.scroll-glitch-active main {
+  animation: scroll-vhs-jitter 18s steps(3, end) infinite;
+  will-change: transform, filter, clip-path;
+}
+
+/* EFECTO DE ABERRACIÓN CROMÁTICA RGB MUY NOTORIO EN TEXTOS (Decoplado del movimiento lateral) (antigravity) */
+body.scroll-glitch-active p,
+body.scroll-glitch-active h1,
+body.scroll-glitch-active h2,
+body.scroll-glitch-active h3,
+body.scroll-glitch-active h4,
+body.scroll-glitch-active h5,
+body.scroll-glitch-active h6,
+body.scroll-glitch-active span,
+body.scroll-glitch-active a,
+body.scroll-glitch-active button,
+body.scroll-glitch-active label,
+body.scroll-glitch-active li {
+  text-shadow: 
+    calc(var(--scroll-glitch-shift, 0px) * 1.5) 0 rgba(255, 0, 80, 0.7), 
+    calc(var(--scroll-glitch-shift, 0px) * -1.5) 0 rgba(0, 240, 255, 0.7);
+  will-change: text-shadow;
+}
+
+/* BARRA DE TRACKING VHS CON ALTO CONTRASTE Y EFECTO DE RUIDO ANALÓGICO (antigravity) */
+body.scroll-glitch-active::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  z-index: 9998;
+  pointer-events: none;
+  /* Textura de ruido de líneas horizontales estáticas con mayor contraste */
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.15) 0px,
+    rgba(255, 255, 255, 0.15) 2px,
+    rgba(0, 0, 0, 0.28) 2px,
+    rgba(0, 0, 0, 0.28) 4px
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 25px 50px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3.5px) contrast(1.45) saturate(1.3);
+  animation: vhs-tracking-bar 0.7s linear infinite;
+  opacity: calc(var(--scroll-glitch-opacity, 0) * 1.5);
+  will-change: top, opacity;
+}
+
+/* REJILLA DE ESCANEO ANALÓGICO CON FÓSFORO CRT RGB SUBPIXEL MÁS ACENTUADO */
+body.scroll-glitch-active::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: 
+    /* Scanlines verticales finas analógicas */
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%),
+    /* Micro-ruido RGB fósforo CRT (aberración cromática notoria en la rejilla) */
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 80, 0.08),
+      rgba(0, 255, 0, 0.03),
+      rgba(0, 240, 255, 0.08)
+    );
+  background-size: 100% 8px, 16px 100%;
+  opacity: var(--scroll-glitch-opacity, 0);
+  mix-blend-mode: screen;
+  will-change: opacity;
+}
+/* ========================================
+   💻 DESKTOP LAYOUT - BRAND SECTION
+   ======================================== */
+
+@media (min-width: 1024px) {
+
+  .lex-desktop-container {
+    min-height: 980px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lex-desktop-content {
+    position: relative;
+    z-index: 30;
+    text-align: center;
+    max-width: 620px;
+  }
+
+  .lex-desktop-side-image {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    z-index: 10;
+  }
+
+  .lex-desktop-side-image.left {
+    left: -40px;
+  }
+
+  .lex-desktop-side-image.right {
+    right: -40px;
+  }
+
+  .lex-desktop-center-image {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    z-index: 20;
+  }
+
+  /* =========================
+     D2D DESKTOP
+     ========================= */
+
+  .d2d-desktop-container {
+    min-height: 980px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .d2d-desktop-content {
+    position: relative;
+    z-index: 30;
+    padding-top: 80px;
+    text-align: center;
+  }
+
+  .d2d-left-character {
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    width: 360px;
+    z-index: 10;
+  }
+
+  .d2d-right-character {
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+    width: 340px;
+    z-index: 10;
+  }
+
+  .d2d-center-character {
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    width: 420px;
+    z-index: 20;
+  }
+}
+/* ========================================
+   🎭 LEX IMAGE FADE MASK (DESKTOP)
+   ======================================== */
+
+@media (min-width: 1024px) {
+
+  .lex-fade-mask {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 68%,
+      rgba(0,0,0,0.92) 78%,
+      rgba(0,0,0,0.55) 88%,
+      rgba(0,0,0,0) 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 55%,
+      rgba(0,0,0,0.92) 78%,
+      rgba(0,0,0,0.55) 88%,
+      rgba(0,0,0,0) 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+}
+
+@media (min-width: 1024px) {
+
+  .lex-fade-mask-soft {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 82%,
+      rgba(0,0,0,0.92) 90%,
+      rgba(0,0,0,0.7) 96%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 82%,
+      rgba(0,0,0,0.92) 90%,
+      rgba(0,0,0,0.7) 96%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+  }
+
+}
+
+/* ========================================
+   🧿 LEX DESKTOP GLITCH FIX
+   ======================================== */
+
+@media (min-width: 1024px) {
+
+  .scroll-glitch-image {
+    display: inline-block;
+    line-height: 0;
+  }
+
+  .scroll-glitch-image img {
+    display: block;
+  }
+
+  .scroll-glitch-layer {
+    width: 100%;
+    height: 100%;
+    object-fit: inherit;
+    transform: inherit;
+  }
+
+  /* SOLO LEX DESKTOP */
+  .lex-desktop-glitch {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lex-desktop-glitch .scroll-glitch-layer {
+    inset: 0;
+  }
+
+}

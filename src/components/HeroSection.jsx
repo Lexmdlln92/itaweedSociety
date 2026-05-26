@@ -1,157 +1,178 @@
 // src/components/HeroSection.jsx
-// eslint-disable-next-line no-unused-vars
-import { motion, useScroll, useTransform } from 'framer-motion';
-import hero from '../assets/hero/d2d-lex.webp';
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import hero from '../assets/hero/movil.mp4';
+import heroDesktop from '../assets/hero/video-desktop.mp4';
 
 export default function HeroSection() {
-  // Hook para obtener el progreso del scroll
   const { scrollYProgress } = useScroll();
-  /*instrucciones de desplazamientos
-  // ===== GUÍA DE MODIFICACIÓN DE DESPLAZAMIENTOS =====
-  // useTransform(scrollYProgress, [rango_scroll], [rango_valores])
-  // 
-  // DIRECCIONES:
-  // x: positivo = derecha, negativo = izquierda
-  // y: positivo = abajo, negativo = arriba
-  // scale: 1 = tamaño normal, >1 = más grande, <1 = más pequeño
-  // rotate: grados de rotación (positivo = horario)
-  //
-  // EJEMPLOS:
-  // Hacia la derecha: [0, 300]
-  // Hacia la izquierda: [0, -300] 
-  // Hacia abajo: [0, 200]
-  // Hacia arriba: [0, -200]
-  // Crecer: [1, 2]
-  // Encoger: [1, 0.5]
-  */
-  // "PRENDAS" - se mueve hacia la izquierda
-  const prendasX = useTransform(scrollYProgress, [0, 1], [0, -6000]);
-  
-  // "QUE COINCIDE" - se mueve hacia la derecha más lento
-  const coincideX = useTransform(scrollYProgress, [0, 1], [0, 6000]);
-  
-  // "Con Tu Style" - se mueve hacia la izquierda más rápido
-  const styleX = useTransform(scrollYProgress, [0, 1], [0, -6000]);
-  
-  // "SIN MIEDO A BRILLAR" - MODIFICADO: desplazamiento descendente + cambio de escala
-  const brillarY = useTransform(scrollYProgress, [0, 1], [0, 1000]);     // Desciende 800px
-  const brillarScale = useTransform(scrollYProgress, [0, 1], [1, 4]); // Crece 2.5x
-  
-  // "100% COLOMBIANO" - se mueve hacia la derecha con rotación
-  const colombianoX = useTransform(scrollYProgress, [0, 1], [0, 6000]);
+
+  // Textos — mismos desplazamientos originales
+  const prendasX       = useTransform(scrollYProgress, [0, 1], [0, -6000]);
+  const coincideX      = useTransform(scrollYProgress, [0, 1], [0, 6000]);
+  const styleX         = useTransform(scrollYProgress, [0, 1], [0, -6000]);
+  const brillarY       = useTransform(scrollYProgress, [0, 1], [0, 1000]);
+  const brillarScale   = useTransform(scrollYProgress, [0, 1], [1, 4]);
+  const colombianoX    = useTransform(scrollYProgress, [0, 1], [0, 6000]);
   const colombianoRotate = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  
-  // Párrafo - efecto de fade y desplazamiento vertical
-  const parrafoY = useTransform(scrollYProgress, [0, 1], [0, 4000]);
+  const parrafoY       = useTransform(scrollYProgress, [0, 1], [0, 4000]);
   const parrafoOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.3]);
-  
-  // Imagen - efecto de escala y desplazamiento
-  const imagenScale = useTransform(scrollYProgress, [0, 1], [1, 2]);
-  const imagenY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const imagenScale    = useTransform(scrollYProgress, [0, 1], [1, 2]);
+  const imagenY        = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   return (
     <section className="text-center py-2 bg-transparent relative overflow-hidden">
-      <h1 className="text-2xl font-bold leading-tight text-white mt-3">
-        
-        {/* PRENDAS - se mueve hacia la izquierda */}
-        <motion.span 
+
+      {/* ── PATRÓN DE FONDO GEOMÉTRICO — igual que NewArrivals ── */}
+      <div
+        className="absolute inset-0 opacity-[0.02] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #ffffff 1px, transparent 1px),
+            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      {/* ── ETIQUETA TÉCNICA SUPERIOR — estilo Corteiz/NewArrivals ── */}
+      <div className="relative z-10 flex items-center justify-center gap-4 pt-4 pb-1">
+        <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase hidden lg:block">
+          DROP CODE: ITW_DS_01 // MEDELLIN, COL
+        </span>
+        <div className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-ping" />
+        <p className="text-white text-xs tracking-[0.3em] font-montserrat uppercase font-bold">
+          — EN TEMPORADA
+        </p>
+        <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase hidden lg:block">
+          COORD: 6.2442° N, 75.5812° W
+        </span>
+      </div>
+
+      {/* ── TÍTULOS — fuentes y desplazamientos originales intactos ── */}
+      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-tight text-white mt-12 lg:mt-5 relative z-10 mb-10">
+
+        <motion.span
           style={{ x: prendasX }}
-          className="font-montserrat font-black text-3xl block mb-3"
+          className="font-montserrat font-black text-3xl md:text-5xl lg:text-7xl block mb-3"
         >
           PRENDAS
         </motion.span>
-        
-        {/* QUE COINCIDE - se mueve hacia la derecha */}
-        <motion.span 
+
+        <motion.span
           style={{ x: coincideX }}
-          className="font-rock text-4xl block mb-1"
+          className="font-rock text-4xl md:text-6xl lg:text-7xl block mb-1"
         >
-          QUE COINCIDE 
+          QUE COINCIDE
         </motion.span>
-        
-        {/* Con Tu Style - se mueve hacia la izquierda más rápido */}
-        <motion.span 
+
+        <motion.span
           style={{ x: styleX }}
-          className="font-rock text-4xl block mb-2 mt-2"
+          className="font-rock text-4xl md:text-6xl lg:text-7xl block mb-2 mt-2"
         >
-          Con Tu Style 
+          Con Tu Style
         </motion.span>
-        
-        {/* SIN MIEDO A BRILLAR - MODIFICADO: desplazamiento descendente + escala */}
-        <motion.div 
-          style={{ 
-            y: brillarY,      // Desplazamiento descendente
-            scale: brillarScale // Cambio de escala
-          }}
-          className="font-londrina text-6xl text-purple-300 inline-block"
+
+        <motion.div
+          style={{ y: brillarY, scale: brillarScale }}
+          className="font-londrina text-6xl md:text-8xl lg:text-9xl text-purple-300 inline-block"
         >
           SIN MIEDO A BRILLAR
         </motion.div>
-        
+
         <br />
-        
-        {/* 100% COLOMBIANO - se mueve hacia la derecha con rotación */}
-        <motion.div 
-          style={{ 
-            y: colombianoX, 
-            rotate: colombianoRotate 
-          }}
-          className="font-dancing text-3xl text-purple-300 inline-block"
+
+        <motion.div
+          style={{ y: colombianoX, rotate: colombianoRotate }}
+          className="font-dancing text-3xl md:text-5xl lg:text-7xl text-purple-300 inline-block"
         >
           %100 Colombianos
         </motion.div>
-        
+
         <br />
       </h1>
-      
-      {/* Párrafo con fade y desplazamiento vertical */}
-      <motion.p 
-        style={{ 
-          y: parrafoY, 
-          opacity: parrafoOpacity 
-        }}
-        className="mt-1 text-gray-500"
+
+      {/* ── PÁRRAFO — misma lógica original + código técnico ── */}
+      <motion.div
+        style={{ y: parrafoY, opacity: parrafoOpacity }}
+        className="mt-1 relative z-10 flex flex-col items-center gap-1"
       >
-        marcas para gente chimbita .
-      </motion.p>
-      
-      {/* Imagen con escala y desplazamiento */}
-      <motion.img 
-        src={hero} 
-        alt="Hero" 
-        style={{ 
-          scale: imagenScale, 
-          y: imagenY 
-        }}
-        className="w-full mt-4 rounded-md"
-      />
+        <p className="text-gray-500 font-montserrat text-sm tracking-widest">
+          marcas para gente chimbita.
+        </p>
+        <span className="text-[9px] font-mono text-white/15 tracking-widest uppercase hidden lg:block">
+          RTW // STREETWEAR // 1 OF 7 PCS
+        </span>
+      </motion.div>
+
+      {/* ── IMAGEN MÓVIL — igual que antes ── */}
+      <motion.div className="relative z-10 mt-4 lg:hidden">
+        {/* Tag técnico sobre imagen */}
+        <div className="absolute top-3 left-3 z-20 flex gap-2 pointer-events-none">
+          <span className="text-[8px] font-mono text-white/40 tracking-widest uppercase bg-black/60 px-2 py-0.5 rounded border border-white/10">
+            ITW_DS_01
+          </span>
+          <span className="text-[8px] font-mono text-green-400 tracking-widest uppercase bg-green-400/10 px-2 py-0.5 rounded border border-green-400/20 font-bold">
+            1 / 7 PCS
+          </span>
+        </div>
+        <motion.video
+          src={hero}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ scale: imagenScale, y: imagenY }}
+          className="w-full rounded-md"
+        />
+        {/* Borde inferior decorativo */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+      </motion.div>
+
+      {/* ── IMAGEN DESKTOP — igual que antes ── */}
+      <motion.div className="relative z-10 mt-4 hidden lg:block">
+        {/* Tags técnicos sobre imagen desktop */}
+        <div className="absolute top-4 left-4 z-20 flex gap-2 pointer-events-none">
+          <span className="text-[8px] font-mono text-white/40 tracking-widest uppercase bg-black/60 px-2 py-0.5 rounded border border-white/10">
+            ITW_DS_01
+          </span>
+          <span className="text-[8px] font-mono text-green-400 tracking-widest uppercase bg-green-400/10 px-2 py-0.5 rounded border border-green-400/20 font-bold">
+            1 / 7 PCS
+          </span>
+        </div>
+
+        {/* Mira holográfica centrada — igual que NewArrivals */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+          <div className="w-32 h-32 rounded-full border border-green-400/0 group-hover:border-green-400/20 transition-all duration-500 flex items-center justify-center">
+            <div className="absolute w-full h-[1px] bg-green-400/10" />
+            <div className="absolute h-full w-[1px] bg-green-400/10" />
+            <div className="w-2 h-2 rounded-full bg-green-400/20 shadow-md shadow-green-400/30" />
+          </div>
+        </div>
+
+        <motion.video
+          src={heroDesktop}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ scale: imagenScale, y: imagenY }}
+          className="w-full rounded-md"
+        />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
+      </motion.div>
+
+      {/* ── FOOTER INFO — coordenadas + CTA sutil, estilo NewArrivals ── */}
+      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-5 md:px-16 lg:px-24 border-t border-white/10 bg-transparent mt-">
+        <p className="text-white/20 text-xs font-montserrat tracking-widest uppercase">
+          Hecho con obsesión en Medellín
+        </p>
+        <span className="text-[9px] font-mono text-white/15 tracking-widest uppercase hidden sm:block">
+          COORD: 6.2442° N, 75.5812° W // SEASON 01
+        </span>
+      </div>
+
     </section>
   );
 }
 
-// ===== EJEMPLOS DE MODIFICACIÓN =====
-//
-// Para mover texto hacia ARRIBA mientras haces scroll:
-// const textoY = useTransform(scrollYProgress, [0, 1], [0, -500]);
-//
-// Para mover texto DIAGONALMENTE (derecha + abajo):
-// const textoX = useTransform(scrollYProgress, [0, 1], [0, 300]);
-// const textoY = useTransform(scrollYProgress, [0, 1], [0, 200]);
-// style={{ x: textoX, y: textoY }}
-//
-// Para ROTAR mientras se mueve:
-// const textoRotate = useTransform(scrollYProgress, [0, 1], [0, 180]);
-// style={{ x: textoX, rotate: textoRotate }}
-//
-// Para cambiar OPACIDAD:
-// const textoOpacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-// style={{ opacity: textoOpacity }}
-//
-// Para COMBINAR múltiples efectos:
-// style={{ 
-//   x: textoX, 
-//   y: textoY, 
-//   scale: textoScale, 
-//   rotate: textoRotate,
-//   opacity: textoOpacity 
-// }}

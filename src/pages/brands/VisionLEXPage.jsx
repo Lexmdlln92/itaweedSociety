@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import { 
   getVisionLexProducts, 
   convertPriceToNumber 
-} from "../data/productData";
+} from "../../data/productData";
 
 // Importar el hero parallax
-import HeroParallax from "../components/HeroParallax";
+import HeroParallax from "../../components/HeroParallax";
 
 export default function VisionLEXPage() {
   const { category } = useParams();

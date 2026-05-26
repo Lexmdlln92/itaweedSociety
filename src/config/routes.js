@@ -9,13 +9,13 @@ const NewArrivalsPage = lazy(() => import("../pages/NewArrivalsPage"));
 const ProductDetail = lazy(() => import("../pages/ProductDetail"));
 const CartPage = lazy(() => import("../pages/CartPage"));
 const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
-const ProfilePage = lazy(() => import("../pages/ProfilePage"));
+const ProfilePage = lazy(() => import("../pages/profile/ProfilePage"));
 const SearchPage = lazy(() => import("../pages/SearchPage"));
 const AdminDashboard = lazy(() => import("../pages/AdminDashboard"));
 
 // Páginas especiales
-const UniversoD2DPage = lazy(() => import("../pages/UniversoD2DPage"));
-const VisionLEXPage = lazy(() => import("../pages/VisionLEXPage"));
+const UniversoD2DPage = lazy(() => import("../pages/brands/UniversoD2DPage"));
+const VisionLEXPage = lazy(() => import("../pages/brands/VisionLEXPage"));
 const UndertakeInfo = lazy(() => import("../pages/UndertakeInfo"));
 const CollaborationPage = lazy(() => import("../pages/CollaborationPage"));
 const StatesPage = lazy(() => import("../pages/StatesPage"));
@@ -28,6 +28,18 @@ const TshirtStep1Silhouettes = lazy(() => import("../pages/customize/TshirtStep1
 const TshirtStep2Size = lazy(() => import("../pages/customize/TshirtStep2Size"));
 const TshirtStep3Color = lazy(() => import("../pages/customize/TshirtStep3Color"));
 const Sweatpants1Silhouettes = lazy(() => import("../pages/customize/Sweatpants1Silhouettes"));
+const SweatpantsStep2Size = lazy(() => import("../pages/customize/SweatpantsStep2Size"));
+const SweatpantsStep3Color = lazy(() => import("../pages/customize/SweatpantsStep3Color"));
+const Short1Silhouettes = lazy(() => import("../pages/customize/Short1Silhouettes"));
+const ShortStep2Size = lazy(() => import("../pages/customize/ShortStep2Size"));
+const ShortStep3Color = lazy(() => import("../pages/customize/ShortStep3Color"));
+
+// 🔐 PÁGINAS DE AUTENTICACIÓN (NUEVAS)
+const AuthSuccessPage = lazy(() => import("../pages/profile/AuthSuccessPage"));
+const VerifyMagicLinkPage = lazy(() => import("../pages/profile/VerifyMagicLinkPage"));
+const RegisterPage = lazy(() => import("../pages/profile/RegisterPage"));
+const ProfileDashboard = lazy(() => import("../pages/profile/ProfileDashboard"));
+const SubscribePage = lazy(() => import("../pages/profile/SubscribePage"));
 
 // Páginas de sidebar
 const Men = lazy(() => import("../pages/sidebar/MenPage"));
@@ -125,26 +137,66 @@ export const routes = [
     name: "Sweatpants-silhouette",
     category: "customize"
   },
+  {
+    path: "/customize/sudaderas/step2",
+    component: SweatpantsStep2Size,
+    name: "Sweatpants-size",
+    category: "customize"
+  },
+  {
+    path: "/customize/sudaderas/step3",
+    component: SweatpantsStep3Color,
+    name: "Sweatpants-color",
+    category: "customize"
+  },
+    {
+    path: "/customize/pantalonetas",
+    component: Short1Silhouettes,
+    name: "Short-silhouette",
+    category: "customize"
+  },
+    {
+    path: "/customize/pantalonetas/step2",
+    component: ShortStep2Size,
+    name: "Short-size",
+    category: "customize"
+  },
+    {
+    path: "/customize/pantalonetas/step3",
+    component: ShortStep3Color,
+    name: "Short-color",
+    category: "customize"
+  },
 
-  // 👤 PÁGINAS DE USUARIO
-  {
-    path: "/cart",
-    component: CartPage,
-    name: "cart",
-    category: "user"
-  },
-  {
-    path: "/checkout",
-    component: CheckoutPage,
-    name: "checkout",
-    category: "user"
-  },
-  {
-    path: "/profile",
-    component: ProfilePage,
-    name: "profile",
-    category: "user"
-  },
+// 👤 PÁGINAS DE USUARIO
+{
+  path: "/cart",
+  component: CartPage,
+  name: "cart",
+  category: "user",
+  //protected: true   // 🔒 Solo usuarios logueados
+},
+{
+  path: "/checkout",
+  component: CheckoutPage,
+  name: "checkout",
+  category: "user",
+  protected: true   // 🔒 Solo usuarios logueados
+},
+{
+  path: "/profile",
+  component: ProfilePage,
+  name: "profile",
+  category: "user",
+  //protected: true   // 🔒 Solo usuarios logueados
+},
+{
+  path: "/profile-page",
+  component: ProfilePage,
+  name: "profile-page",
+  category: "user",
+},
+
   {
     path: "/search",
     component: SearchPage,
@@ -171,6 +223,32 @@ export const routes = [
     name: "things",
     category: "sidebar"
   },
+    // 🔐 PÁGINAS DE AUTENTICACIÓN y registro (NUEVAS)
+  {
+    path: "/auth/success",
+    component: AuthSuccessPage,
+    name: "auth-success",
+    category: "auth"
+  },
+  {
+    path: "/auth/verify-magic-link",
+    component: VerifyMagicLinkPage,
+    name: "verify-magic-link",
+    category: "auth"
+  },
+  {
+    path: "/register",
+    component: RegisterPage,
+    name: "register",
+    category: "auth"
+  },
+  {
+    path: "/suscribe",
+    component: SubscribePage,
+    name: "suscribe",
+    category: "auth"
+  },
+
 
   // 🔧 PÁGINAS ADMINISTRATIVAS E INSTITUCIONALES
   {
@@ -178,6 +256,13 @@ export const routes = [
     component: AdminDashboard,
     name: "admin",
     category: "admin"
+  },
+    {
+    path: "/profile/dashboard",
+    component: ProfileDashboard,
+    name: "profile-dashboard",
+    category: "admin",
+    protected: true   // 🔒 Solo usuarios logueados
   },
   {
     path: "/undertake",

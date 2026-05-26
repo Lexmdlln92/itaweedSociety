@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
-import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import MarqueeText from "../components/MarqueeText";
 import Footer from "../components/Footer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 // Importación dinámica
 const NewArrivals = React.lazy(() => import("../components/NewArrivals"));
@@ -16,14 +16,13 @@ const States = React.lazy(() => import("../components/States"));
 export default function Home() {
   return (
     <>
-      <Navbar />
       <HeroSection />
       <MarqueeText 
         text="👽 D2D 🔥 LEX 👽 D2D 🔥 LEX " 
         speed="10s" 
         fontClass="font-londrina" 
       />
-      <Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
         <NewArrivals />
         <BrandSection/>
         <CustomizationSection/>
