@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-
-void motion;
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 import state1 from "../assets/states/state1.webp";
@@ -18,7 +17,7 @@ const images = [
   { img: state1, tag: "STORY FLOW", time: "18h" },
   { img: state2, tag: "ITAWEED FAM", time: "23h" },
 ];
-
+0
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {

@@ -26,12 +26,11 @@ const stories = [
 const StorieSection = () => {
   return (
     <section className="bg-black text-white  overflow-hidden">
-
       {/* ── HEADER ── */}
       <div className="px-6 pt-14 pb-8 md:px-16 lg:px-24 flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-white/10">
         <div>
           {/* Etiqueta superior estilo editorial */}
-                    <div className="flex items-center gap-4 mb-3">
+          <div className="flex items-center gap-4 mb-3">
             <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase hidden lg:block">
               DROP CODE: ITW_DS_05 // MEDELLIN, COL
             </span>
@@ -41,13 +40,17 @@ const StorieSection = () => {
             </p>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-none font-montserrat">
-            Historias<br />
-            <span className="text-violet-700">detrás de</span><br />
+            Historias
+            <br />
+            <span className="text-violet-700">detrás de</span>
+            <br />
             cada prenda
           </h2>
         </div>
         <p className="text-white/40 text-sm max-w-xs font-montserrat tracking-wide hidden md:block">
-          by <span className="text-violet-700 font-bold">LEX Factory</span> — diseño con historia, producción limitada. mas como un homenaje a la cultura pop que como una simple prenda de vestir.
+          by <span className="text-violet-700 font-bold">LEX Factory</span> —
+          diseño con historia, producción limitada. mas como un homenaje a la
+          cultura pop que como una simple prenda de vestir.
         </p>
       </div>
 
@@ -61,7 +64,10 @@ const StorieSection = () => {
               border-b border-white/10`}
           >
             {/* Imagen — ocupa la mitad en desktop */}
-            <div className="relative w-full lg:w-1/2 overflow-hidden" style={{ minHeight: "320px" }}>
+            <div
+              className="relative w-full lg:w-1/2 overflow-hidden"
+              style={{ minHeight: "320px" }}
+            >
               <img
                 src={story.image}
                 alt={story.title}
@@ -71,8 +77,6 @@ const StorieSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black opacity-60 hidden lg:block" />
               {/* Overlay gradiente inferior en mobile */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent lg:hidden" />
-
-              
             </div>
 
             {/* Contenido — ocupa la otra mitad en desktop */}
@@ -96,8 +100,10 @@ const StorieSection = () => {
               </p>
 
               {/* Número en desktop (decorativo, abajo) */}
-              <span className="text-white/5 font-black font-montserrat select-none absolute bottom-4 right-6 hidden lg:block"
-                style={{ fontSize: "5rem", lineHeight: 1 }}>
+              <span
+                className="text-white/5 font-black font-montserrat select-none absolute bottom-4 right-6 hidden lg:block"
+                style={{ fontSize: "5rem", lineHeight: 1 }}
+              >
                 {story.decorativeText}
               </span>
             </div>
@@ -115,10 +121,11 @@ const StorieSection = () => {
           className="group flex items-center gap-3 px-8 py-3 border border-white/30 text-white rounded-full text-sm font-semibold font-montserrat tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300"
         >
           Ver más
-          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 text-violet-700">→</span>
+          <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 text-violet-700">
+            →
+          </span>
         </Link>
       </div>
-
     </section>
   );
 };

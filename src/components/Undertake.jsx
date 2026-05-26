@@ -1,8 +1,6 @@
 // src/components/Undertake.jsx
 import { useRef } from "react";
-
-
-void motion;
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 export default function Undertake() {
@@ -54,10 +52,15 @@ export default function Undertake() {
         className="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center gap-6"
         style={{ y: yContent }}
       >
-        {/* Etiqueta superior estilo CustomizationSection */}
-        <p className="text-violet-500 text-xs tracking-[0.4em] font-montserrat uppercase font-bold bg-violet-500/5 px-4 py-1.5 rounded-full border border-violet-500/20">
-          — Emprendimiento
-        </p>
+        <div className="flex items-center gap-4 mb-3">
+            <span className="text-[9px] font-mono text-white/20 tracking-widest uppercase hidden lg:block">
+              DROP CODE: ITW_DS_05 // MEDELLIN, COL
+            </span>
+            <div className="w-1.5 h-1.5 rounded-full bg-violet-500 animate-ping" />
+            <p className="text-violet-700 text-xs tracking-[0.3em] font-montserrat uppercase font-bold block">
+              — EMPRENDIMIENTO
+            </p>
+          </div>
 
         {/* Título Principal Minimalista */}
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight font-montserrat tracking-tight max-w-3xl mt-2">
@@ -65,7 +68,7 @@ export default function Undertake() {
           <span className="text-violet-700 transition-colors duration-500">Itaweed Society</span>
         </h2>
 
-        {/* Línea divisoria minimalista violeta */}
+        {/* Línea divisoria minimalista verde */}
         <div className="w-16 h-[2px] bg-violet-500 my-2" />
 
         {/* Párrafo Conciso Original */}
@@ -79,8 +82,8 @@ export default function Undertake() {
           className="group flex items-center gap-3 px-8 py-3.5 border border-white/20 text-white rounded-full text-sm font-semibold font-montserrat tracking-widest uppercase bg-transparent relative overflow-hidden mt-4"
           whileHover={{ 
             scale: 1.05, 
-            borderColor: "#a855f7",
-            boxShadow: "0 0 25px rgba(168, 85, 247, 0.2)" 
+            borderColor: "#4ade80",
+            boxShadow: "0 0 25px rgba(74, 222, 128, 0.2)" 
           }}
           whileTap={{ scale: 0.98 }}
           transition={{ duration: 0.3 }}
@@ -99,4 +102,3 @@ export default function Undertake() {
     </section>
   );
 }
-

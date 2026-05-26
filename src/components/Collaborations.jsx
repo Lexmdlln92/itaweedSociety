@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 const VHS_LINES = Array.from({ length: 8 }, (_, i) => ({
   id: i,
   top: `${10 + i * 11}%`,
