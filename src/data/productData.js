@@ -4,10 +4,11 @@
 // y es la única fuente de verdad para toda la aplicación
 
 // Importar todas las imágenes necesarias
-import t1 from "../assets/productDetails/tshirt1.webp";
+import t1 from "../assets/productDetails/tt.png";
 import t1_1 from "../assets/productDetails/tshirt1-1.webp";
 import t1_2 from "../assets/productDetails/tshirt1-2.webp";
 import t1_3 from "../assets/productDetails/tshirt1-3.webp";
+import video3d from "../assets/productDetails/3d-video.mp4";
 import t2 from "../assets/D2D/tshirt2.webp";
 import t3 from "../assets/D2D/tshirt3.webp";
 import t4 from "../assets/lex/tshirt4.webp";
@@ -52,8 +53,8 @@ export const productCategories = {
       rating: 4.5,
       description: "Camiseta urbana con silueta oversize, estampado original estilo manga street.",
       size: "Disponible en tallas de la S a la XXL",
-      // Imágenes adicionales para el carrusel (solo este producto tiene múltiples vistas)
-      gallery: [t1, t1_1, t1_3, t1_2],
+      // 2. Agregamos el video al inicio o al final del array de la galería
+      gallery: [t1, t1_1, t1_3, t1_2, video3d], // <--- Agregado aquí al final
       breadcrumbCategory: "Recién llegados",
       breadcrumbRoute: "/products/new"
     },

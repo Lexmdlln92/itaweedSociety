@@ -17,6 +17,7 @@ function App() {
         <ScrollToTop 
           behavior="smooth" 
           delay={100}
+          autoScroll={true}
         />
         
         <Navbar />

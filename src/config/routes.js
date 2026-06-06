@@ -4,21 +4,19 @@ import { lazy } from "react";
 // LAZY LOADING - Carga bajo demanda de componentes
 // Páginas principales
 const Home = lazy(() => import("../pages/Home"));
-const CustomizePage = lazy(() => import("../pages/CustomizePage"));
-const NewArrivalsPage = lazy(() => import("../pages/NewArrivalsPage"));
-const ProductDetail = lazy(() => import("../pages/ProductDetail"));
-const CartPage = lazy(() => import("../pages/CartPage"));
-const CheckoutPage = lazy(() => import("../pages/CheckoutPage"));
-const ProfilePage = lazy(() => import("../pages/profile/ProfilePage"));
-const SearchPage = lazy(() => import("../pages/SearchPage"));
-const AdminDashboard = lazy(() => import("../pages/AdminDashboard"));
+const CustomizePage = lazy(() => import("../pages/shop/CustomizePage")); // reorganización: movido a pages/shop/
+const NewArrivalsPage = lazy(() => import("../pages/shop/NewArrivalsPage")); // reorganización: movido a pages/shop/
+const ProductDetail = lazy(() => import("../pages/shop/ProductDetail")); // reorganización: movido a pages/shop/
+const CartPage = lazy(() => import("../pages/shop/CartPage")); // reorganización: movido a pages/shop/
+const CheckoutPage = lazy(() => import("../pages/shop/CheckoutPage")); // reorganización: movido a pages/shop/
+const SearchPage = lazy(() => import("../pages/shop/SearchPage")); // reorganización: movido a pages/shop/
 
 // Páginas especiales
 const UniversoD2DPage = lazy(() => import("../pages/brands/UniversoD2DPage"));
 const VisionLEXPage = lazy(() => import("../pages/brands/VisionLEXPage"));
-const UndertakeInfo = lazy(() => import("../pages/UndertakeInfo"));
-const CollaborationPage = lazy(() => import("../pages/CollaborationPage"));
-const StatesPage = lazy(() => import("../pages/StatesPage"));
+const UndertakeInfo = lazy(() => import("../pages/institutional/UndertakeInfo")); // reorganización: movido a pages/institutional/
+const CollaborationPage = lazy(() => import("../pages/institutional/CollaborationPage")); // reorganización: movido a pages/institutional/
+const StatesPage = lazy(() => import("../pages/institutional/StatesPage")); // reorganización: movido a pages/institutional/
 
 // Páginas de customización
 const Hoodie1Silhouettes = lazy(() => import("../pages/customize/Hoodie1Silhouettes"));
@@ -35,11 +33,7 @@ const ShortStep2Size = lazy(() => import("../pages/customize/ShortStep2Size"));
 const ShortStep3Color = lazy(() => import("../pages/customize/ShortStep3Color"));
 
 // 🔐 PÁGINAS DE AUTENTICACIÓN (NUEVAS)
-const AuthSuccessPage = lazy(() => import("../pages/profile/AuthSuccessPage"));
-const VerifyMagicLinkPage = lazy(() => import("../pages/profile/VerifyMagicLinkPage"));
-const RegisterPage = lazy(() => import("../pages/profile/RegisterPage"));
-const ProfileDashboard = lazy(() => import("../pages/profile/ProfileDashboard"));
-const SubscribePage = lazy(() => import("../pages/profile/SubscribePage"));
+const LoginPage = lazy(() => import("../pages/profile/LoginPage"));
 
 // Páginas de sidebar
 const Men = lazy(() => import("../pages/sidebar/MenPage"));
@@ -88,13 +82,23 @@ export const routes = [
     category: "products"
   },
 
-  // ✂️ PÁGINAS DE CUSTOMIZACIÓN
+// ✂️ PÁGINAS DE CUSTOMIZACIÓN
+  // 1. Ruta base para el catálogo general (Acción desde "Empezar a diseñar")
   {
-    path: "/customize/:category",
+    path: "/customize",
     component: CustomizePage,
-    name: "customize-main",
+    name: "customize-catalog",
     category: "customize"
   },
+  // 2. Mantienes esta por si necesitas capturar alguna otra categoría dinámica en el futuro
+  {
+    path: "/customize/info/:category", 
+    component: CustomizePage,
+    name: "customize-main-info",
+    category: "customize"
+  },
+
+  // Flujos directos de personalización que ya tienes definidos:
   {
     path: "/customize/buzos",
     component: Hoodie1Silhouettes,
@@ -149,19 +153,19 @@ export const routes = [
     name: "Sweatpants-color",
     category: "customize"
   },
-    {
+  {
     path: "/customize/pantalonetas",
     component: Short1Silhouettes,
     name: "Short-silhouette",
     category: "customize"
   },
-    {
+  {
     path: "/customize/pantalonetas/step2",
     component: ShortStep2Size,
     name: "Short-size",
     category: "customize"
   },
-    {
+  {
     path: "/customize/pantalonetas/step3",
     component: ShortStep3Color,
     name: "Short-color",
@@ -170,11 +174,17 @@ export const routes = [
 
 // 👤 PÁGINAS DE USUARIO
 {
+  path: "/login",
+  component: LoginPage,
+  name: "login",
+  category: "user"
+},
+{
   path: "/cart",
   component: CartPage,
   name: "cart",
   category: "user",
-  //protected: true   // 🔒 Solo usuarios logueados
+  protected: true   // 🔒 Solo usuarios logueados
 },
 {
   path: "/checkout",
@@ -182,19 +192,6 @@ export const routes = [
   name: "checkout",
   category: "user",
   protected: true   // 🔒 Solo usuarios logueados
-},
-{
-  path: "/profile",
-  component: ProfilePage,
-  name: "profile",
-  category: "user",
-  //protected: true   // 🔒 Solo usuarios logueados
-},
-{
-  path: "/profile-page",
-  component: ProfilePage,
-  name: "profile-page",
-  category: "user",
 },
 
   {
@@ -224,46 +221,12 @@ export const routes = [
     category: "sidebar"
   },
     // 🔐 PÁGINAS DE AUTENTICACIÓN y registro (NUEVAS)
-  {
-    path: "/auth/success",
-    component: AuthSuccessPage,
-    name: "auth-success",
-    category: "auth"
-  },
-  {
-    path: "/auth/verify-magic-link",
-    component: VerifyMagicLinkPage,
-    name: "verify-magic-link",
-    category: "auth"
-  },
-  {
-    path: "/register",
-    component: RegisterPage,
-    name: "register",
-    category: "auth"
-  },
-  {
-    path: "/suscribe",
-    component: SubscribePage,
-    name: "suscribe",
-    category: "auth"
-  },
+
 
 
   // 🔧 PÁGINAS ADMINISTRATIVAS E INSTITUCIONALES
-  {
-    path: "/admin",
-    component: AdminDashboard,
-    name: "admin",
-    category: "admin"
-  },
-    {
-    path: "/profile/dashboard",
-    component: ProfileDashboard,
-    name: "profile-dashboard",
-    category: "admin",
-    protected: true   // 🔒 Solo usuarios logueados
-  },
+
+
   {
     path: "/undertake",
     component: UndertakeInfo,

@@ -1,6 +1,7 @@
 // src/components/HeroParallax.jsx
 import { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
+
 // Importar imágenes
 import cieloImage from '../assets/parallex/cielo.webp';
 import cloud1Image from '../assets/parallex/cloud 1.webp';
@@ -9,15 +10,7 @@ import cloud3Image from '../assets/parallex/cloud 3.webp';
 import cloud4Image from '../assets/parallex/cloud 4.webp';
 import cloud5Image from '../assets/parallex/cloud 5.webp';
 import astroImage from '../assets/parallex/new astro (1).webp';
-
-/*
-  HeroParallax Combinado:
-  - Animaciones de entrada del código 2
-  - Estructura y configuración responsive del código 1
-  - Nubes más grandes y mejor distribuidas
-  - Prioriza vista móvil pero funciona responsive
-  - Astronauta centrado horizontalmente (cambio solicitado)
-*/
+import logoLex from "../assets/logo LEX.png";
 
 export default function HeroParallax() {
   const containerRef = useRef(null);
@@ -25,14 +18,9 @@ export default function HeroParallax() {
   const rafRef = useRef(null);
 
   const [scrollY, setScrollY] = useState(0);
-  const [containerHeight, setContainerHeight] = useState(
-    typeof window !== 'undefined' ? window.innerHeight : 800
-  );
-  const [containerWidth, setContainerWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : 360
-  );
+  const [containerWidth, setContainerWidth] = useState(360);
 
-  // ---------- Lectura optimizada de scroll (rAF) ----------
+  // ---------- Control de Scroll Optimizado ----------
   useEffect(() => {
     let ticking = false;
     const onScroll = () => {
@@ -45,339 +33,205 @@ export default function HeroParallax() {
         });
       }
     };
-
     window.addEventListener('scroll', onScroll, { passive: true });
-
     return () => {
       window.removeEventListener('scroll', onScroll);
       if (rafRef.current) window.cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
-  // ---------- Medir contenedor (alto / ancho) ----------
+  // ---------- Control de Dimensiones Adaptativas ----------
   useEffect(() => {
-    const measure = () => {
-      const el = containerRef.current;
-      setContainerHeight(el?.clientHeight ?? window.innerHeight);
-      setContainerWidth(el?.clientWidth ?? window.innerWidth);
+    if (typeof window === 'undefined') return;
+    
+    const handleResize = () => {
+      setContainerWidth(window.innerWidth);
     };
-    measure();
-    window.addEventListener('resize', measure, { passive: true });
-    return () => window.removeEventListener('resize', measure);
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // ---------------- CONFIGURACIÓN ACTUALIZADA ----------------
-  const MOBILE_BREAKPOINT_PX = 768;
+  const isMobile = containerWidth < 768;
 
-  // Nubes más grandes: 60-65% del alto del contenedor
-  const cloudHeightRatioMobile = 0.65; // 70% del alto en móvil
-  const cloudHeightRatioDesktop = 0.60; // 60% en desktop
+  // ---------- Parallax Tuning ----------
+  const skyParallaxY = scrollY * 0.10;
+  const astroParallaxY = scrollY * 0.72;     // Caída rápida del astro detrás de las nubes
+  const cloudParallaxY = scrollY * 0.12;    // Movimiento mínimo para retener cobertura
 
-  // Offset bottom (negativo para centrar mejor las nubes)
-  const cloudBottomOffsetMobile = -containerHeight * 0.18;
-  const cloudBottomOffsetDesktop = -containerHeight * 0.28;
+  // Variaciones de deriva y pivote vertical orgánico para las nubes
+  const cloudDriftAndPivot = (xValue, duration = 25) => ({
+    x: [0, xValue, 0],
+    y: [-6, 6, -6],
+    transition: { duration, repeat: Infinity, ease: "easeInOut" }
+  });
 
-  // Astronauta: posición inicial más arriba
-  const astroBaseOffsetMobile = -containerHeight * 0.15; // Más arriba en móvil
-  const astroBaseOffsetDesktop = -containerHeight * 0.15; // Más arriba en desktop
-
-  // Astronauta: velocidad de descenso
-  const astroSpeedMobile = 0.9;
-  const astroSpeedDesktop = 0.6;
-
-  // Astronauta: límite de desplazamiento hacia abajo
-  const astroMaxMobile = containerHeight * 0.5;
-  const astroMaxDesktop = containerHeight * 0.65;
-
-  // Astronauta: tamaños
-  const astroWidthMobile = Math.round(containerWidth * 0.90); // ~90% ancho contenedor en móvil
-  const astroWidthDesktop = 340; // px en desktop
-  // ------------------------------------------------------------
-
-  const useMobileLayout = containerWidth < MOBILE_BREAKPOINT_PX;
-
-  // Calcular valores finales
-  const cloudHeightPx = Math.round(
-    containerHeight * (useMobileLayout ? cloudHeightRatioMobile : cloudHeightRatioDesktop)
-  );
-  const cloudBottomOffset = useMobileLayout ? cloudBottomOffsetMobile : cloudBottomOffsetDesktop;
-
-  const ASTRO_BASE_OFFSET = useMobileLayout ? astroBaseOffsetMobile : astroBaseOffsetDesktop;
-  const ASTRO_SPEED_MULT = useMobileLayout ? astroSpeedMobile : astroSpeedDesktop;
-  const ASTRO_MAX_OFFSET = useMobileLayout ? astroMaxMobile : astroMaxDesktop;
-  const ASTRO_WIDTH_PX = useMobileLayout ? astroWidthMobile : astroWidthDesktop;
-
-  // Parallax transforms mejorados
-  const skyTransform = `translateY(${scrollY * 0.015}px)`;
-  
-  // Astronauta: combinación base + desplazamiento por scroll (limitado)
-  const computedYOffset = Math.min(scrollY * ASTRO_SPEED_MULT, ASTRO_MAX_OFFSET);
-  const astroOuterTranslateY = ASTRO_BASE_OFFSET + computedYOffset;
-
-  // --- Framer Motion variants mejorados ---
-  const astroFloat = {
-    y: [0, -12, 0],
-    rotate: [0, 1, -1, 0],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: 'easeInOut'
-    }
-  };
-
-  const cloudDriftSmall = {
-    x: [0, 6, 0, -6, 0],
-    transition: { duration: 20, repeat: Infinity, ease: 'easeInOut' }
-  };
-  const cloudDriftMedium = {
-    x: [0, -8, 0, 8, 0],
-    transition: { duration: 24, repeat: Infinity, ease: 'easeInOut' }
-  };
-  const cloudDriftLarge = {
-    x: [0, 10, 0, -10, 0],
-    transition: { duration: 28, repeat: Infinity, ease: 'easeInOut' }
-  };
-
-  // Variante para el parallax de nubes con scroll
-  const cloudParallaxY = scrollY * 0.25;
-
-  // ------------------ RENDER ------------------
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden"
-      aria-label="Hero Visión LEX"
+      className="relative h-[85vh] w-full overflow-hidden bg-[#07050a] "
+      aria-label="Vision LEX Drop Parallax Screen"
     >
-      {/* Fondo: cielo con animación de entrada */}
-      <motion.div
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
+      {/* MALLA TÉCNICA GEOMÉTRICA */}
+      <div
+        className="absolute inset-0 opacity-[0.03] z-10 pointer-events-none lg:mb-4"
         style={{
-          backgroundImage: `url(${cieloImage})`,
-          transform: skyTransform,
-          willChange: 'transform'
+          backgroundImage: `
+            linear-gradient(to right, #ffffff 1px, transparent 1px),
+            linear-gradient(to bottom, #ffffff 1px, transparent 1px)
+          `,
+          backgroundSize: isMobile ? "40px 40px" : "80px 80px",
         }}
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        aria-hidden
       />
 
-      {/* Overlay para legibilidad */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#3f0f4f]/40 z-5" aria-hidden />
-
-      {/* Texto y CTA con animaciones de entrada del código 2 */}
-      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-full px-4 z-50 pointer-events-none">
-        <div className="max-w-xs mx-auto text-center pointer-events-auto">
-          <motion.h1 
-            className="text-3xl sm:text-4xl font-bold text-white drop-shadow-lg mb-1"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            VISIÓN LEX
-          </motion.h1>
-          <motion.p 
-            className="text-xs sm:text-sm text-white/90 drop-shadow-md mb-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          >
-            prendas que trascienden lo ordinario
-          </motion.p>
-          <div className="flex justify-center">
-            <motion.button 
-              className="bg-white/20 backdrop-blur-sm border-2 border-white text-white px-5 py-2 rounded-full font-semibold text-sm hover:bg-white hover:text-[#3f0f4f] transition-all"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Descubrir Colección
-            </motion.button>
+      {/* ANCLAJE ABSOLUTO SUPERIOR: METADATA DE DROP (z-50) */}
+      <div className="absolute top-4 left-0 w-full z-50 px-6 pointer-events-none">
+        <div className="max-w-7xl mx-auto w-full flex justify-between items-center font-mono text-[10px] text-white/40 tracking-[0.3em] uppercase">
+          <div className="flex items-center gap-3 mx-auto md:mx-0 text-center md:text-left">
+            <span className="inline-block w-2 h-2 bg-purple-500 rounded-full animate-ping" />
+            <span>ITAWEED // LEX_2026</span>
+          </div>
+          <div className="hidden md:flex flex-col items-end text-right">
+            <span>VISIONARY ARC // 01</span>
+            <span className="text-white/10 mt-0.5 text-[9px]">COORD: 6.1732° N // 75.6041° W</span>
           </div>
         </div>
       </div>
 
-      {/* ASTRONAUTA con animaciones mejoradas
-          ------- CAMBIO REALIZADO: ahora centrado horizontalmente y posicionado con top (ajustable) -------
-      */}
-      <div
-        className="absolute z-30 pointer-events-none"
+      {/* GRADIENTES DE AMBIENTACIÓN INDUSTRIAL */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-20 pointer-events-none" />
+      
+      {/* GRADIENTE INFERIOR RESTAURADO (z-45): Delante de nubes, detrás de textos */}
+      <div className="absolute bottom-0 left-0 w-full h-[35%] bg-gradient-to-t from-[#07050a] via-[#07050a]/85 to-transparent z-45 pointer-events-none" />
+
+      {/* -----------------------------------------------------
+         CAPA BASE [z-0]: CIELO / ESPACIO PROFUNDO
+      ----------------------------------------------------- */}
+      <motion.div
+        className="absolute inset-0 w-full h-[120%] bg-cover bg-center z-0"
         style={{
-          left: '50%',
-          top: useMobileLayout ? '35%' : '40%', // ajusta aquí si quieres más arriba/abajo
-          transform: `translate(-50%, ${astroOuterTranslateY}px)`,
-          willChange: 'transform',
-          transition: 'transform 120ms linear'
+          backgroundImage: `url(${cieloImage})`,
+          y: skyParallaxY,
         }}
-        aria-hidden
+        initial={{ scale: 1.12, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+      />
+
+      {/* -----------------------------------------------------
+         CAPA 1 [z-10]: ASTRONAUTA
+      ----------------------------------------------------- */}
+      <motion.div
+        className="absolute top-[11%] md:top-[11%] left-0 w-full flex items-center justify-center md:justify-start md:pl-24 lg:pl-50 z-10 pointer-events-none"
+        style={{ y: astroParallaxY }}
       >
-        <motion.div
-          animate={astroFloat}
-          className="relative flex items-center justify-center"
-        >
+        <div className="relative w-[63%] md:w-[20%] max-w-[420px]">
           <motion.img
             src={astroImage}
-            alt="Astronauta Vision LEX"
-            initial={{ opacity: 0, scale: 0.8, y: 30 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
-              y: 0
+            alt="Astro Aspect"
+            className="w-full h-auto drop-shadow-[0_25px_30px_rgba(139,92,246,0.18)] select-none"
+            animate={{
+              y: [0, -12, 0],
+              rotate: [0, 0.5, -0.5, 0]
             }}
-            transition={{ 
-              opacity: { duration: 1, delay: 0.6 },
-              scale: { duration: 1, delay: 0.6 },
-              y: { duration: 1, delay: 0.6 }
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut"
             }}
-            className="object-contain drop-shadow-2xl"
-            style={{
-              width: '800px',      // tamaño fijo
-              maxWidth: '100%',     // límite relativo al contenedor
-              pointerEvents: 'none'
-            }}
-            loading="eager"
           />
-        </motion.div>
+        </div>
+      </motion.div>
+
+      {/* -----------------------------------------------------
+         CAPA 2 [z-40]: NUBES MASIVAS
+         Móvil: Conserva intactos los valores h-[80%] y los bottoms originales
+         Desktop (md): Limita la altura general a la mitad del contenedor (md:h-[50%])
+         y fuerza a que las imágenes se hundan/ajusten al ras inferior del viewport.
+      ----------------------------------------------------- */}
+      <motion.div 
+        className="absolute bottom-0 left-0 w-full h-[80%] md:h-[55%] z-40 pointer-events-none"
+        style={{ y: cloudParallaxY }}
+      >
+        {/* Nube 4 - Trasera Base Profunda */}
+        <div className="absolute bottom-[-5%] md:bottom-[-150%] left-[-15%] w-[80%] opacity-30 mix-blend-screen">
+          <motion.img src={cloud4Image} animate={cloudDriftAndPivot(-8, 28)} className="w-full h-auto" />
+        </div>
+
+        {/* Nube 5 - Trasera Base Profunda */}
+        <div className="absolute bottom-[-5%] md:bottom-[-150%] right-[-15%] w-[85%] opacity-25 mix-blend-screen">
+          <motion.img src={cloud5Image} animate={cloudDriftAndPivot(10, 26)} className="w-full h-auto" />
+        </div>
+
+        {/* Nube 1 - Intermedia Izquierda Gigante */}
+        <div className="absolute bottom-[-2%] md:bottom-[-70%] left-[-25%] w-[95%] md:w-[75%] opacity-90 mix-blend-screen">
+          <motion.img src={cloud1Image} animate={cloudDriftAndPivot(-14, 24)} className="w-full h-auto" />
+        </div>
+
+        {/* Nube 2 - Intermedia Derecha Gigante */}
+        <div className="absolute bottom-[-2%] md:bottom-[-150%] right-[-25%] w-[95%] md:w-[75%] opacity-90 mix-blend-screen">
+          <motion.img src={cloud2Image} animate={cloudDriftAndPivot(14, 24)} className="w-full h-auto" />
+        </div>
+
+        {/* Nube 3 - Cierre Frontal del Drop Absoluto */}
+        <div className="absolute bottom-[-6%] md:bottom-[-320%] left-1/2 -translate-x-1/2 w-[185%] md:w-[140%] opacity-95">
+          <motion.img src={cloud3Image} animate={cloudDriftAndPivot(6, 20)} className="w-full h-auto" />
+        </div>
+      </motion.div>
+
+      {/* -----------------------------------------------------
+         CAPA 3 [z-50]: TEXTOS PRINCIPALES Y LOGO (Fijos en el frente total)
+      ----------------------------------------------------- */}
+      <div className="absolute inset-0 w-full z-50 pointer-events-none flex flex-col justify-start px-6 pt-76 md:pt-40">
+        <div className="max-w-7xl mx-auto w-full flex flex-col justify-start h-full relative">
+          
+          {/* Bloque de títulos y textos descriptivos */}
+          <div className="flex flex-col items-center md:items-end text-center md:text-right md:ml-auto">
+            <h2 className="font-sans font-black tracking-tighter text-7xl md:text-[180px] text-white uppercase leading-none drop-shadow-[0_6px_16px_rgba(0,0,0,0.65)]">
+              MAJESTIC
+            </h2>
+            
+            <div className="mt-4 md:mt-6 w-full max-w-[480px] md:max-w-[260px] drop-shadow-[0_6px_20px_rgba(0,0,0,0.7)] ">
+              <img
+                src={logoLex}
+                alt="LEX Logo"
+                className="w-full h-auto object-contain select-none pointer-events-none"
+                style={{
+                  filter: "invert(42%) sepia(93%) saturate(1352%) hue-rotate(231deg) brightness(97%) contrast(95%)"
+                }}
+              />
+            </div>
+
+            {/* Texto Descriptivo */}
+            <p className="text-white font-mono text-[11px] md:text-xs uppercase tracking-[0.2em] opacity-8xl pt-2 mt-2 max-w-[290px] md:max-w-md leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              Consigue las prendas del drop exclusivo de la calle de la mano con LEX.
+            </p>
+          </div>
+
+          <div className="hidden md:block absolute bottom-12 left-0 font-mono text-[9px] text-purple-400/30 tracking-widest text-right">
+            <span>[ SYSTEM_DEPLOY: ACTIVE ]</span>
+          </div>
+
+        </div>
       </div>
 
-      {/* NUBES MEJORADAS con animaciones de entrada */}
-      {/* Cloud 1 - izquierda principal */}
-      <motion.div
-        className="absolute z-40 opacity-90 pointer-events-none"
-        style={{
-          bottom: `${cloudBottomOffset}px`,
-          left: useMobileLayout ? '-25%' : '-12%',
-          height: `${cloudHeightPx}px`,
-          width: 'auto',
-          transform: `translateY(${cloudParallaxY}px)`,
-          willChange: 'transform'
-        }}
-        initial={{ x: -120, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.9 }}
-        transition={{ duration: 1.8, delay: 1, ease: 'easeOut' }}
-        aria-hidden
-      >
-        <motion.img
-          src={cloud1Image}
-          alt="Nube 1"
-          style={{ height: '100%', width: 'auto', display: 'block' }}
-          animate={cloudDriftLarge}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* Cloud 2 - derecha principal */}
-      <motion.div
-        className="absolute z-40 opacity-85 pointer-events-none"
-        style={{
-          bottom: `${cloudBottomOffset}px`,
-          right: useMobileLayout ? '-60%' : '-10%',
-          height: `${cloudHeightPx}px`,
-          width: 'auto',
-          transform: `translateY(${cloudParallaxY}px)`,
-          willChange: 'transform'
-        }}
-        initial={{ x: 120, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.85 }}
-        transition={{ duration: 1.8, delay: 1.2, ease: 'easeOut' }}
-        aria-hidden
-      >
-        <motion.img
-          src={cloud2Image}
-          alt="Nube 2"
-          style={{ height: '100%', width: 'auto', display: 'block' }}
-          animate={cloudDriftMedium}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* Cloud 3 - centro (la más prominente) */}
-      <motion.div
-        className="absolute z-40 opacity-95 pointer-events-none"
-        style={{
-          bottom: `${Math.round(cloudBottomOffset * 0.9)}px`,
-          left: '50%',
-          transform: `translateX(-50%) translateY(${cloudParallaxY}px)`,
-          height: `${Math.round(cloudHeightPx * 1.1)}px`, // 10% más grande
-          width: 'auto',
-          willChange: 'transform'
-        }}
-        initial={{ y: 60, opacity: 0 }}
-        animate={{ y: 0, opacity: 0.95 }}
-        transition={{ duration: 1.8, delay: 1.4, ease: 'easeOut' }}
-        aria-hidden
-      >
-        <motion.img
-          src={cloud3Image}
-          alt="Nube 3"
-          style={{ height: '100%', width: 'auto', display: 'block' }}
-          animate={cloudDriftSmall}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* Cloud 4 - centro-derecha */}
-      <motion.div
-        className="absolute z-40 opacity-88 pointer-events-none"
-        style={{
-          bottom: `${Math.round(cloudBottomOffset * 0.4)}px`,
-          right: useMobileLayout ? '-20%' : '15%',
-          height: `${cloudHeightPx}px`,
-          width: 'auto',
-          transform: `translateY(${cloudParallaxY}px)`,
-          willChange: 'transform'
-        }}
-        initial={{ x: 80, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.88 }}
-        transition={{ duration: 1.8, delay: 1.6, ease: 'easeOut' }}
-        aria-hidden
-      >
-        <motion.img
-          src={cloud4Image}
-          alt="Nube 4"
-          style={{ height: '100%', width: 'auto', display: 'block' }}
-          animate={cloudDriftMedium}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* Cloud 5 - centro-izquierda */}
-      <motion.div
-        className="absolute z-40 opacity-83 pointer-events-none"
-        style={{
-          bottom: `${Math.round(cloudBottomOffset * 0.6)}px`,
-          left: useMobileLayout ? '-60%' : '18%',
-          height: `${cloudHeightPx}px`,
-          width: 'auto',
-          transform: `translateY(${cloudParallaxY}px)`,
-          willChange: 'transform'
-        }}
-        initial={{ x: -80, opacity: 0 }}
-        animate={{ x: 0, opacity: 0.83 }}
-        transition={{ duration: 1.8, delay: 1.8, ease: 'easeOut' }}
-        aria-hidden
-      >
-        <motion.img
-          src={cloud5Image}
-          alt="Nube 5"
-          style={{ height: '100%', width: 'auto', display: 'block' }}
-          animate={cloudDriftLarge}
-          loading="eager"
-        />
-      </motion.div>
-
-      {/* partículas pequeñas decorativas */}
-      <div className="absolute inset-0 pointer-events-none z-20" aria-hidden="true">
-        <div className="absolute top-1/4 left-1/6 w-[3px] h-[3px] bg-white rounded-full animate-pulse" />
-        <div className="absolute top-1/7 left-1/4 w-[3px] h-[3px] bg-white rounded-full animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-[4px] h-[4px] bg-white rounded-full animate-pulse delay-1000" />
-        <div className="absolute top-1/3 right-2/4 w-[4px] h-[4px] bg-white rounded-full animate-pulse delay-1000" />
-        <div className="absolute bottom-1/3 left-1/3 w-[6px] h-[6px] bg-white rounded-full animate-pulse delay-500" />
-        <div className="absolute bottom-1/4 right-1/6 w-[6px] h-[6px] bg-white rounded-full animate-pulse delay-1500" />
+      {/* PARTÍCULAS AMBIENTALES DE SOPORTE */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-purple-400 rounded-full animate-pulse"
+            style={{
+              top: `${10 + Math.random() * 40}%`,
+              left: `${5 + Math.random() * 90}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`,
+              opacity: 0.10 + Math.random() * 0.25,
+            }}
+          />
+        ))}
       </div>
     </section>
   );
 }
-

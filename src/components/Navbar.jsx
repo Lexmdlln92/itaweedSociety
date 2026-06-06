@@ -28,10 +28,21 @@ export default function Navbar() {
   };
   const toggleSaleAccordion = () => setIsSaleExpanded((s) => !s);
 
+  // Handler para el click en el logo - hace scroll al top y navega a home
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    // Primero hace scroll al top
+    if (window.scrollToTopManually) {
+      window.scrollToTopManually();
+    }
+    // Luego navega a home
+    window.location.href = '/';
+  };
+
   return (
     <>
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-fuchsia-950/80 backdrop-blur-md shadow-md px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-60 bg-fuchsia-950/80 backdrop-blur-md shadow-md px-4 py-4">
         <div className="flex items-center justify-between">
           {/* left: menu + profile */}
           <div className="flex items-center gap-3 text-2xl text-white">
@@ -39,15 +50,19 @@ export default function Navbar() {
               <FiMenu />
             </button>
 
-            <Link to="/profile" aria-label="Mi perfil">
+            <Link to="/login" aria-label="Iniciar sesión">
               <FiUser />
             </Link>
           </div>
 
           {/* center: logo */}
-          <Link to="/" className="absolute left-1/2 transform -translate-x-1/2" aria-label="Inicio">
+          <button 
+            onClick={handleLogoClick} 
+            className="absolute left-1/2 transform -translate-x-1/2 bg-none border-none cursor-pointer" 
+            aria-label="Volver a inicio"
+          >
             <img src={logo} alt="itaweed society" className="h-8 object-contain" />
-          </Link>
+          </button>
 
           {/* right: search + cart */}
           <div className="flex items-center gap-4 text-2xl text-white relative">
@@ -217,13 +232,7 @@ export default function Navbar() {
 
           {/* Información corporativa */}
           <div className="border-b border-gray-200">
-            <Link
-              to="/careers"
-              onClick={closeSidebar}
-              className="block px-6 py-4 text-gray-700 hover:bg-gray-50 transition-colors"
-            >
-              Trabaja Aquí
-            </Link>
+            
             <Link
               to="/about-us"
               onClick={closeSidebar}

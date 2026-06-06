@@ -1,17 +1,17 @@
 import React, { Suspense } from "react";
-import HeroSection from "../components/HeroSection";
+import HeroSection from "../components/sections/HeroSection";
 import MarqueeText from "../components/MarqueeText";
 import Footer from "../components/Footer";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 // Importación dinámica
-const NewArrivals = React.lazy(() => import("../components/NewArrivals"));
-const BrandSection = React.lazy(() => import("../components/BrandSection"));
-const CustomizationSection = React.lazy(() => import("../components/CustomizationSection"));
-const StorieSection = React.lazy(() => import("../components/StorieSection"));
-const Undertake = React.lazy(() => import("../components/Undertake"));
-const Collaborations = React.lazy(() => import("../components/Collaborations"));
-const States = React.lazy(() => import("../components/States"));
+const NewArrivals = React.lazy(() => import("../components/sections/NewArrivals"));
+const BrandSection = React.lazy(() => import("../components/sections/BrandSection"));
+const CustomizationSection = React.lazy(() => import("../components/sections/CustomizationSection"));
+const StorieSection = React.lazy(() => import("../components/sections/StorieSection"));
+const Undertake = React.lazy(() => import("../components/sections/Undertake"));
+const Collaborations = React.lazy(() => import("../components/sections/Collaborations"));
+const States = React.lazy(() => import("../components/sections/States"));
 
 export default function Home() {
   return (
